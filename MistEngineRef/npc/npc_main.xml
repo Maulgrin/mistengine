@@ -176,6 +176,30 @@
 				<target>npctncdetails_list</target>
 			</button_iadd>
 			<windowlist name="npclimits_list">
+				<script>function onDrop(x, y, draginfo)
+						if draginfo.getType() ~= "shortcut" then
+							return false;
+						end
+
+						local sClass, sRecord = draginfo.getShortcutData();
+						if not RecordDataManager.isRecordTypeDisplayClass("stattag", sClass) then
+							return false;
+						end
+
+						local nodeSource = DB.findNode(sRecord);
+						if not nodeSource then
+							return false;
+						end
+
+						local wNew = createWindow();
+						if not wNew then
+							return false;
+						end
+
+						local nodeTarget = wNew.getDatabaseNode();
+						DB.setValue(nodeTarget, "statustag_string", "string", DB.getValue(nodeSource, "name", ""));
+						return true;
+					end</script>
 				<bounds>10,92,200,230</bounds>
 				<class>npclimitsdetails</class>
 				<datasource>.npclimitsdetails</datasource>
