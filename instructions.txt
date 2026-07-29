@@ -20,5 +20,11 @@ Do not modify files inside CoreRPG-reference.
 Do not invent Fantasy Grounds API functions without finding an existing
 example in MistEngineRef or CoreRPG.
 
+Write changes development-log.md under the notes folder.
+
 Builds will be named MistEngineRef.pak 
 pak is simply a zip file that was renamed .pak to work with Fantasy Grounds.
+
+When I say create pak than 
+1. zip everthing under the MistEngineRef folder. 
+2. rename it MistEngineRef.pak and move to the build folder. Overwrite what is already in the build folder if necessary
