@@ -16,71 +16,71 @@
 			</button_idelete>
 			<stringfield name="StringField1">
 				<frame name="border" offset="2,0,0,0" />
-				<bounds>33,25,193,25</bounds>
+				<bounds>28,25,183,30</bounds>
 				<multilinespacing>15</multilinespacing>
 				<font>reference-b-large</font>
 			</stringfield>
 			<stringfield name="StringField2">
 				<frame name="border" offset="2,0,0,0" />
-				<bounds>33,55,193,25</bounds>
+				<bounds>28,55,183,30</bounds>
 				<multilinespacing>15</multilinespacing>
 			</stringfield>
 			<stringfield name="StringField3">
 				<frame name="border" offset="2,0,0,0" />
-				<bounds>33,85,193,25</bounds>
+				<bounds>28,85,183,30</bounds>
 				<multilinespacing>15</multilinespacing>
 			</stringfield>
 			<stringfield name="StringField4">
 				<frame name="border" offset="2,0,0,0" />
-				<bounds>33,115,193,25</bounds>
+				<bounds>28,115,183,30</bounds>
 				<multilinespacing>15</multilinespacing>
 			</stringfield>
 			<stringfield name="StringField5">
 				<frame name="border" offset="2,0,0,0" />
-				<bounds>33,145,193,25</bounds>
+				<bounds>28,145,183,30</bounds>
 				<multilinespacing>15</multilinespacing>
 			</stringfield>
 			<stringfield name="StringField6">
 				<frame name="border" offset="2,0,0,0" />
-				<bounds>33,175,193,25</bounds>
+				<bounds>28,175,183,30</bounds>
 				<multilinespacing>15</multilinespacing>
 			</stringfield>
 			<stringfield name="StringField7">
 				<frame name="border" offset="2,0,0,0" />
-				<bounds>33,205,193,25</bounds>
+				<bounds>28,205,183,30</bounds>
 				<multilinespacing>15</multilinespacing>
 			</stringfield>
 			<stringfield name="StringField9">
 				<frame name="border" offset="2,0,0,0" />
-				<bounds>33,257,193,25</bounds>
+				<bounds>28,260,183,30</bounds>
 				<multilinespacing>15</multilinespacing>
 			</stringfield>
 			<stringfield name="StringField10">
 				<frame name="border" offset="2,0,0,0" />
-				<bounds>33,287,193,25</bounds>
+				<bounds>28,290,183,30</bounds>
 				<multilinespacing>15</multilinespacing>
 			</stringfield>
 			<stringfield name="StringField11">
 				<frame name="border" />
-				<bounds>31,334,200,80</bounds>
-				<multilinespacing>20</multilinespacing>
+				<bounds>28,345,203,70</bounds>
+				<multilinespacing>17</multilinespacing>
 			</stringfield>
 			<stringcontrol name="power_lbl">
-				<bounds>35,2,100,20</bounds>
+				<bounds>30,2,100,20</bounds>
 				<underline />
 				<static textres="fellowthemedetails_power_lbl_LabelCaption" />
 				<font>reference-h</font>
 				<readonly />
 			</stringcontrol>
 			<stringcontrol name="weakness_lbl">
-				<bounds>35,233,100,20</bounds>
+				<bounds>30,238,100,20</bounds>
 				<underline />
 				<static textres="fellowthemedetails_weakness_lbl_LabelCaption" />
 				<font>reference-h</font>
 				<readonly />
 			</stringcontrol>
 			<stringcontrol name="quest_lbl">
-				<bounds>35,313,100,20</bounds>
+				<bounds>30,323,100,20</bounds>
 				<underline />
 				<static textres="fellowthemedetails_quest_lbl_LabelCaption" />
 				<font>reference-h</font>
@@ -150,55 +150,55 @@
 				<state icon="button_checkon" />
 			</buttonfield>
 			<buttonfield name="Checkbox1">
-				<bounds>223,28,20,20</bounds>
+				<bounds>216,30,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox1_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
 			</buttonfield>
 			<buttonfield name="Checkbox2">
-				<bounds>223,58,20,20</bounds>
+				<bounds>216,60,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox2_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
 			</buttonfield>
 			<buttonfield name="Checkbox3">
-				<bounds>223,88,20,20</bounds>
+				<bounds>216,90,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox3_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
 			</buttonfield>
 			<buttonfield name="Checkbox4">
-				<bounds>223,118,20,20</bounds>
+				<bounds>216,120,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox4_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
 			</buttonfield>
 			<buttonfield name="Checkbox5">
-				<bounds>223,148,20,20</bounds>
+				<bounds>216,150,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox5_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
 			</buttonfield>
 			<buttonfield name="Checkbox6">
-				<bounds>223,178,20,20</bounds>
+				<bounds>216,180,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox6_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
 			</buttonfield>
 			<buttonfield name="Checkbox7">
-				<bounds>223,208,20,20</bounds>
+				<bounds>216,210,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox7_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
 			</buttonfield>
 			<buttonfield name="Checkbox9">
-				<bounds>223,258,20,20</bounds>
+				<bounds>216,265,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox9_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
 			</buttonfield>
 			<buttonfield name="Checkbox10">
-				<bounds>223,288,20,20</bounds>
+				<bounds>216,295,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox10_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
@@ -309,7 +309,7 @@
 				</script>
 			</buttonfield>
 			<buttoncontrol name="Button1">
-				<bounds>1,28,20,20</bounds>
+				<bounds>2,30,20,20</bounds>
 				<default>1</default>
 				<icon normal="the_add" />
 				<font>button-white</font>
@@ -319,7 +319,7 @@
 				</script>
 			</buttoncontrol>
 			<buttoncontrol name="Button2">
-				<bounds>1,58,20,20</bounds>
+				<bounds>2,60,20,20</bounds>
 				<default>1</default>
 				<icon normal="the_add" />
 				<font>button-white</font>
@@ -329,7 +329,7 @@
 				</script>
 			</buttoncontrol>
 			<buttoncontrol name="Button3">
-				<bounds>1,88,20,20</bounds>
+				<bounds>2,90,20,20</bounds>
 				<default>1</default>
 				<icon normal="the_add" />
 				<font>button-white</font>
@@ -339,7 +339,7 @@
 				</script>
 			</buttoncontrol>
 			<buttoncontrol name="Button4">
-				<bounds>1,118,20,20</bounds>
+				<bounds>2,120,20,20</bounds>
 				<default>1</default>
 				<icon normal="the_add" />
 				<font>button-white</font>
@@ -349,7 +349,7 @@
 				</script>
 			</buttoncontrol>
 			<buttoncontrol name="Button5">
-				<bounds>1,148,20,20</bounds>
+				<bounds>2,150,20,20</bounds>
 				<default>1</default>
 				<icon normal="the_add" />
 				<font>button-white</font>
@@ -359,7 +359,7 @@
 				</script>
 			</buttoncontrol>
 			<buttoncontrol name="Button6">
-				<bounds>1,178,20,20</bounds>
+				<bounds>2,180,20,20</bounds>
 				<default>1</default>
 				<icon normal="the_add" />
 				<font>button-white</font>
@@ -369,7 +369,7 @@
 				</script>
 			</buttoncontrol>
 			<buttoncontrol name="Button7">
-				<bounds>1,208,20,20</bounds>
+				<bounds>2,210,20,20</bounds>
 				<default>1</default>
 				<icon normal="the_add" />
 				<font>button-white</font>
@@ -379,7 +379,7 @@
 				</script>
 			</buttoncontrol>
 			<buttoncontrol name="Button9">
-				<bounds>1,258,20,20</bounds>
+				<bounds>2,265,20,20</bounds>
 				<default>-1</default>
 				<icon normal="the_minus" />
 				<font>button-white</font>
@@ -389,7 +389,7 @@
 				</script>
 			</buttoncontrol>
 			<buttoncontrol name="Button10">
-				<bounds>1,288,20,20</bounds>
+				<bounds>2,295,20,20</bounds>
 				<default>-1</default>
 				<icon normal="the_minus" />
 				<font>button-white</font>

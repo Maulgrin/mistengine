@@ -1,0 +1,24 @@
+This workspace contains a Fantasy Grounds Unity ruleset named MistEngineRef,
+built as an extension of CoreRPG.
+
+MistEngineRef is the editable project.
+
+The CoreRPG-reference folder is read-only and may only be used to examine
+standard Fantasy Grounds implementation patterns.
+
+Before changing files:
+
+1. Trace the relevant XML templates, window classes, scripts, and record
+   registrations.
+2. Explain the proposed changes.
+3. Make the smallest changes necessary.
+4. Preserve existing MistEngineRef functionality.
+5. Validate XML after editing.
+6. List every changed file and explain why it changed.
+
+Do not modify files inside CoreRPG-reference.
+Do not invent Fantasy Grounds API functions without finding an existing
+example in MistEngineRef or CoreRPG.
+
+Builds will be named MistEngineRef.pak 
+pak is simply a zip file that was renamed .pak to work with Fantasy Grounds.
