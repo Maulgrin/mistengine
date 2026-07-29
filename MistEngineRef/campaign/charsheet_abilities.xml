@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="charsheet_abilities">
+		<placement>
+			<size height="500" width="990" />
+		</placement>
+		<sheetdata>
+			<list_text name="backpack_list">
+				<frame name="charsheet" offset="15,40,15,40" />
+				<bounds>360,40,275,420</bounds>
+				<class>backpackdetails</class>
+				<datasource>.backpack_list</datasource>
+				<allowcreate />
+				<allowdelete />
+				<empty>
+					<textres>charsheet_abilities_backpack_list_EmptyListText</textres>
+				</empty>
+				<columns>
+					<width>275</width>
+				</columns>
+				<newfocus>item_string</newfocus>
+			</list_text>
+			<button_iadd name="backpack_list_iadd">
+				<bounds>607,0,20,20</bounds>
+				<tooltip textres="charsheet_abilities_backpack_list_iadd_Tooltip" />
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>backpack_list</target>
+			</button_iadd>
+			<button_iedit name="backpack_list_iedit">
+				<bounds>627,0,20,20</bounds>
+				<tooltip textres="charsheet_abilities_backpack_list_iedit_Tooltip" />
+				<icon normal="button_edit" />
+				<font>button-white</font>
+				<target>backpack_list</target>
+			</button_iedit>
+			<list_text name="stattag_list">
+				<script>function onDrop(x, y, draginfo)
+						if draginfo.getType() ~= "shortcut" then
+							return false;
+						end
+
+						local sClass, sRecord = draginfo.getShortcutData();
+						if not RecordDataManager.isRecordTypeDisplayClass("stattag", sClass) then
+							return false;
+						end
+
+						local nodeSource = DB.findNode(sRecord);
+						if not nodeSource then
+							return false;
+						end
+
+						local wNew = createWindow();
+						if not wNew then
+							return false;
+						end
+
+						local nodeTarget = wNew.getDatabaseNode();
+						DB.setValue(nodeTarget, "statustag_string", "string", DB.getValue(nodeSource, "name", ""));
+						return true;
+					end</script>
+				<frame name="charsheet" offset="15,40,15,40" />
+				<bounds>35,40,280,420</bounds>
+				<class>stattagdetails</class>
+				<datasource>.stattag_list</datasource>
+				<allowcreate />
+				<allowdelete />
+				<empty>
+					<textres>charsheet_abilities_stattag_list_EmptyListText</textres>
+				</empty>
+				<columns>
+					<width>280</width>
+					<filldown />
+				</columns>
+				<newfocus>statustag_string</newfocus>
+			</list_text>
+			<button_iadd name="stattag_list_iadd">
+				<bounds>289,0,20,20</bounds>
+				<tooltip textres="charsheet_abilities_stattag_list_iadd_Tooltip" />
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>stattag_list</target>
+			</button_iadd>
+			<button_iedit name="stattag_list_iedit">
+				<bounds>309,0,20,20</bounds>
+				<tooltip textres="charsheet_abilities_stattag_list_iedit_Tooltip" />
+				<icon normal="button_edit" />
+				<font>button-white</font>
+				<target>stattag_list</target>
+			</button_iedit>
+			<list_text name="fellowship_list">
+				<frame name="charsheet" offset="15,20,15,20" />
+				<bounds>680,20,275,460</bounds>
+				<class>fellowshipdetails</class>
+				<datasource>.fellowship_list</datasource>
+				<allowcreate />
+				<allowdelete />
+				<empty>
+					<textres>charsheet_abilities_fellowship_list_EmptyListText</textres>
+				</empty>
+				<columns>
+					<width>275</width>
+				</columns>
+				<newfocus>StringField1</newfocus>
+			</list_text>
+			<button_iadd name="fellowship_list_iadd">
+				<bounds>927,0,20,20</bounds>
+				<tooltip textres="charsheet_abilities_fellowship_list_iadd_Tooltip" />
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>fellowship_list</target>
+			</button_iadd>
+			<button_iedit name="fellowship_list_iedit">
+				<bounds>947,0,20,20</bounds>
+				<tooltip textres="charsheet_abilities_fellowship_list_iedit_Tooltip" />
+				<icon normal="button_edit" />
+				<font>button-white</font>
+				<target>fellowship_list</target>
+			</button_iedit>
+			<stringcontrol name="stattags_lbl">
+				<bounds>96,11,164,20</bounds>
+				<static textres="charsheet_abilities_stattags_lbl_LabelCaption" />
+				<font>reference-h</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="backpack_lbl">
+				<bounds>423,11,154,20</bounds>
+				<static textres="charsheet_abilities_backpack_lbl_LabelCaption" />
+				<font>reference-h</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="Label1">
+				<bounds>746,11,154,20</bounds>
+				<static textres="charsheet_abilities_Label1_LabelCaption" />
+				<font>reference-h</font>
+				<readonly />
+			</stringcontrol>
+		</sheetdata>
+	</windowclass>
+</root>

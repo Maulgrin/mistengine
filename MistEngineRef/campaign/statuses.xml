@@ -1,0 +1,651 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<panel name="statuses" modes="all">
+		<class>statuses</class>
+		<bounds>
+			<anchored>
+				<left anchor="right" offset="-500" />
+				<top anchor="top" offset="0" />
+				<size>
+					<width>300</width>
+					<height>300</height>
+				</size>
+			</anchored>
+		</bounds>
+		<dynamic />
+	</panel>
+	<windowclass name="statuses">
+		<frame>charsheet</frame>
+		<sharable />
+		<noclose />
+		<script>function onInit()
+				if Session.IsHost then
+					makeStatTagsPublic();
+				end
+			
+				if stattag_iadd then
+					stattag_iadd.setVisible(Session.IsHost);
+				end
+			end
+			
+			function makeStatTagsPublic()
+				local nodeList = DB.createNode("stattagg_list");
+				if not nodeList then
+					return;
+				end
+			
+				nodeList.setPublic(true);
+			
+				for _, nodeEntry in pairs(DB.getChildren(nodeList)) do
+					nodeEntry.setPublic(true);
+				end
+			end
+		</script>
+		<sheetdata>
+			<windowtitlebar name="title">
+				<resource>Window_statuses_Title</resource>
+			</windowtitlebar>
+			<windowlist name="stattagg_list">
+				<bounds>12,50,265,200</bounds>
+				<class>stattagdetailsg</class>
+				<datasource>.stattagg_list</datasource>
+				<allowcreate />
+				<allowdelete />
+			</windowlist>
+			<button_iadd name="stattagg_list_iadd">
+				<bounds>257,27,20,20</bounds>
+				<gmvisibleonly />
+				<tooltip textres="statuses_stattagg_list_iadd_Tooltip" />
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>stattagg_list</target>
+				<script>function onButtonPress()
+						if not Session.IsHost then
+							ChatManager.SystemMessage("GM only: only the Host can add entries here.");
+							return true;
+						end
+					
+						super.onButtonPress();
+					
+						if window.filter then
+							window.filter.setValue();
+						end
+					
+						return true;
+					end
+				</script>
+			</button_iadd>
+			<number name="plus1">
+				<frame name="buttondown" />
+				<bounds>34,254,30,30</bounds>
+				<tooltip textres="statuses_plus1_Tooltip" />
+				<color>#FF000000</color>
+				<readonly />
+				<min>1</min>
+				<max>1</max>
+				<default>1</default>
+				<description textres="statuses_plus1_DescriptionText" />
+				<font>reference-b-large</font>
+				<allowdoubleclick></allowdoubleclick>
+				<script>
+					--function onClickDown(x, y)
+					--	ModifierStack.addSlot("Mod", getValue());
+					--	ChatManager.SystemMessage("Mod added +2");
+					--end
+					--
+					function getActorName()
+						local sActorName = "Actor";
+					
+						-- Desktop controls usually need the active player identity.
+						local sIdentity = User.getCurrentIdentity();
+						if sIdentity and sIdentity ~= "" then
+							local nodeChar = DB.findNode("charsheet." .. sIdentity);
+							if nodeChar then
+								local rActor = ActorManager.resolveActor(nodeChar);
+								if rActor then
+									local sName = ActorManager.getDisplayName(rActor);
+									if sName and sName ~= "" then
+										return sName;
+									end
+								end
+					
+								local sName = DB.getValue(nodeChar, "name", "");
+								if sName ~= "" then
+									return sName;
+								end
+							end
+						end
+					
+						-- Fallback for non-desktop / host-only windows.
+						local nodeWin = window.getDatabaseNode();
+						if nodeWin then
+							local rActor = ActorManager.resolveActor(nodeWin);
+							if rActor then
+								local sName = ActorManager.getDisplayName(rActor);
+								if sName and sName ~= "" then
+									return sName;
+								end
+							end
+					
+							sActorName = DB.getValue(nodeWin, "name", "Actor");
+						end
+					
+						return sActorName;
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function onClickDown(x, y)
+						local nMod = tonumber(getValue()) or 0;
+					
+						if nMod == 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Mod", nMod);
+					
+						local sActorName = getActorName();
+					
+						manager_modbutton.sendModButtonMessage(sActorName, nMod);
+					
+						return true;
+					end
+				</script>
+			</number>
+			<number name="minus1">
+				<frame name="buttondown" />
+				<bounds>156,254,30,30</bounds>
+				<tooltip textres="statuses_minus1_Tooltip" />
+				<color>#FF000000</color>
+				<readonly />
+				<min>-1</min>
+				<max>-1</max>
+				<default>-1</default>
+				<description textres="statuses_minus1_DescriptionText" />
+				<font>reference-b-large</font>
+				<allowdoubleclick></allowdoubleclick>
+				<script>
+					--function onClickDown(x, y)
+					--	ModifierStack.addSlot("Mod", getValue());
+					--	ChatManager.SystemMessage("Mod added +2");
+					--end
+					--
+					function getActorName()
+						local sActorName = "Actor";
+					
+						-- Desktop controls usually need the active player identity.
+						local sIdentity = User.getCurrentIdentity();
+						if sIdentity and sIdentity ~= "" then
+							local nodeChar = DB.findNode("charsheet." .. sIdentity);
+							if nodeChar then
+								local rActor = ActorManager.resolveActor(nodeChar);
+								if rActor then
+									local sName = ActorManager.getDisplayName(rActor);
+									if sName and sName ~= "" then
+										return sName;
+									end
+								end
+					
+								local sName = DB.getValue(nodeChar, "name", "");
+								if sName ~= "" then
+									return sName;
+								end
+							end
+						end
+					
+						-- Fallback for non-desktop / host-only windows.
+						local nodeWin = window.getDatabaseNode();
+						if nodeWin then
+							local rActor = ActorManager.resolveActor(nodeWin);
+							if rActor then
+								local sName = ActorManager.getDisplayName(rActor);
+								if sName and sName ~= "" then
+									return sName;
+								end
+							end
+					
+							sActorName = DB.getValue(nodeWin, "name", "Actor");
+						end
+					
+						return sActorName;
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function onClickDown(x, y)
+						local nMod = tonumber(getValue()) or 0;
+					
+						if nMod == 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Mod", nMod);
+					
+						local sActorName = getActorName();
+					
+						manager_modbutton.sendModButtonMessage(sActorName, nMod);
+					
+						return true;
+					end
+				</script>
+			</number>
+			<number name="plus2">
+				<frame name="buttondown" />
+				<bounds>74,254,30,30</bounds>
+				<tooltip textres="statuses_plus2_Tooltip" />
+				<color>#FF000000</color>
+				<readonly />
+				<min>2</min>
+				<max>2</max>
+				<default>2</default>
+				<description textres="statuses_plus2_DescriptionText" />
+				<font>reference-b-large</font>
+				<allowdoubleclick></allowdoubleclick>
+				<script>
+					--function onClickDown(x, y)
+					--	ModifierStack.addSlot("Mod", getValue());
+					--	ChatManager.SystemMessage("Mod added +2");
+					--end
+					--
+					function getActorName()
+						local sActorName = "Actor";
+					
+						-- Desktop controls usually need the active player identity.
+						local sIdentity = User.getCurrentIdentity();
+						if sIdentity and sIdentity ~= "" then
+							local nodeChar = DB.findNode("charsheet." .. sIdentity);
+							if nodeChar then
+								local rActor = ActorManager.resolveActor(nodeChar);
+								if rActor then
+									local sName = ActorManager.getDisplayName(rActor);
+									if sName and sName ~= "" then
+										return sName;
+									end
+								end
+					
+								local sName = DB.getValue(nodeChar, "name", "");
+								if sName ~= "" then
+									return sName;
+								end
+							end
+						end
+					
+						-- Fallback for non-desktop / host-only windows.
+						local nodeWin = window.getDatabaseNode();
+						if nodeWin then
+							local rActor = ActorManager.resolveActor(nodeWin);
+							if rActor then
+								local sName = ActorManager.getDisplayName(rActor);
+								if sName and sName ~= "" then
+									return sName;
+								end
+							end
+					
+							sActorName = DB.getValue(nodeWin, "name", "Actor");
+						end
+					
+						return sActorName;
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function onClickDown(x, y)
+						local nMod = tonumber(getValue()) or 0;
+					
+						if nMod == 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Mod", nMod);
+					
+						local sActorName = getActorName();
+					
+						manager_modbutton.sendModButtonMessage(sActorName, nMod);
+					
+						return true;
+					end
+				</script>
+			</number>
+			<number name="minus2">
+				<frame name="buttondown" />
+				<bounds>196,254,30,30</bounds>
+				<tooltip textres="statuses_minus2_Tooltip" />
+				<color>#FF000000</color>
+				<readonly />
+				<min>-2</min>
+				<max>-2</max>
+				<default>-2</default>
+				<description textres="statuses_minus2_DescriptionText" />
+				<font>reference-b-large</font>
+				<allowdoubleclick></allowdoubleclick>
+				<script>
+					--function onClickDown(x, y)
+					--	ModifierStack.addSlot("Mod", getValue());
+					--	ChatManager.SystemMessage("Mod added +2");
+					--end
+					--
+					function getActorName()
+						local sActorName = "Actor";
+					
+						-- Desktop controls usually need the active player identity.
+						local sIdentity = User.getCurrentIdentity();
+						if sIdentity and sIdentity ~= "" then
+							local nodeChar = DB.findNode("charsheet." .. sIdentity);
+							if nodeChar then
+								local rActor = ActorManager.resolveActor(nodeChar);
+								if rActor then
+									local sName = ActorManager.getDisplayName(rActor);
+									if sName and sName ~= "" then
+										return sName;
+									end
+								end
+					
+								local sName = DB.getValue(nodeChar, "name", "");
+								if sName ~= "" then
+									return sName;
+								end
+							end
+						end
+					
+						-- Fallback for non-desktop / host-only windows.
+						local nodeWin = window.getDatabaseNode();
+						if nodeWin then
+							local rActor = ActorManager.resolveActor(nodeWin);
+							if rActor then
+								local sName = ActorManager.getDisplayName(rActor);
+								if sName and sName ~= "" then
+									return sName;
+								end
+							end
+					
+							sActorName = DB.getValue(nodeWin, "name", "Actor");
+						end
+					
+						return sActorName;
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function onClickDown(x, y)
+						local nMod = tonumber(getValue()) or 0;
+					
+						if nMod == 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Mod", nMod);
+					
+						local sActorName = getActorName();
+					
+						manager_modbutton.sendModButtonMessage(sActorName, nMod);
+					
+						return true;
+					end
+				</script>
+			</number>
+			<number name="plus3">
+				<frame name="buttondown" />
+				<bounds>114,254,30,30</bounds>
+				<tooltip textres="statuses_plus3_Tooltip" />
+				<color>#FF000000</color>
+				<readonly />
+				<min>3</min>
+				<max>3</max>
+				<default>3</default>
+				<description textres="statuses_plus3_DescriptionText" />
+				<font>reference-b-large</font>
+				<allowdoubleclick></allowdoubleclick>
+				<script>
+					--function onClickDown(x, y)
+					--	ModifierStack.addSlot("Mod", getValue());
+					--	ChatManager.SystemMessage("Mod added +2");
+					--end
+					--
+					function getActorName()
+						local sActorName = "Actor";
+					
+						-- Desktop controls usually need the active player identity.
+						local sIdentity = User.getCurrentIdentity();
+						if sIdentity and sIdentity ~= "" then
+							local nodeChar = DB.findNode("charsheet." .. sIdentity);
+							if nodeChar then
+								local rActor = ActorManager.resolveActor(nodeChar);
+								if rActor then
+									local sName = ActorManager.getDisplayName(rActor);
+									if sName and sName ~= "" then
+										return sName;
+									end
+								end
+					
+								local sName = DB.getValue(nodeChar, "name", "");
+								if sName ~= "" then
+									return sName;
+								end
+							end
+						end
+					
+						-- Fallback for non-desktop / host-only windows.
+						local nodeWin = window.getDatabaseNode();
+						if nodeWin then
+							local rActor = ActorManager.resolveActor(nodeWin);
+							if rActor then
+								local sName = ActorManager.getDisplayName(rActor);
+								if sName and sName ~= "" then
+									return sName;
+								end
+							end
+					
+							sActorName = DB.getValue(nodeWin, "name", "Actor");
+						end
+					
+						return sActorName;
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function onClickDown(x, y)
+						local nMod = tonumber(getValue()) or 0;
+					
+						if nMod == 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Mod", nMod);
+					
+						local sActorName = getActorName();
+					
+						manager_modbutton.sendModButtonMessage(sActorName, nMod);
+					
+						return true;
+					end
+				</script>
+			</number>
+			<number name="minus3">
+				<frame name="buttondown" />
+				<bounds>236,254,30,30</bounds>
+				<tooltip textres="statuses_minus3_Tooltip" />
+				<color>#FF000000</color>
+				<readonly />
+				<min>-3</min>
+				<max>-3</max>
+				<default>-3</default>
+				<description textres="statuses_minus3_DescriptionText" />
+				<font>reference-b-large</font>
+				<allowdoubleclick></allowdoubleclick>
+				<script>
+					--function onClickDown(x, y)
+					--	ModifierStack.addSlot("Mod", getValue());
+					--	ChatManager.SystemMessage("Mod added +2");
+					--end
+					--
+					function getActorName()
+						local sActorName = "Actor";
+					
+						-- Desktop controls usually need the active player identity.
+						local sIdentity = User.getCurrentIdentity();
+						if sIdentity and sIdentity ~= "" then
+							local nodeChar = DB.findNode("charsheet." .. sIdentity);
+							if nodeChar then
+								local rActor = ActorManager.resolveActor(nodeChar);
+								if rActor then
+									local sName = ActorManager.getDisplayName(rActor);
+									if sName and sName ~= "" then
+										return sName;
+									end
+								end
+					
+								local sName = DB.getValue(nodeChar, "name", "");
+								if sName ~= "" then
+									return sName;
+								end
+							end
+						end
+					
+						-- Fallback for non-desktop / host-only windows.
+						local nodeWin = window.getDatabaseNode();
+						if nodeWin then
+							local rActor = ActorManager.resolveActor(nodeWin);
+							if rActor then
+								local sName = ActorManager.getDisplayName(rActor);
+								if sName and sName ~= "" then
+									return sName;
+								end
+							end
+					
+							sActorName = DB.getValue(nodeWin, "name", "Actor");
+						end
+					
+						return sActorName;
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function onClickDown(x, y)
+						local nMod = tonumber(getValue()) or 0;
+					
+						if nMod == 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Mod", nMod);
+					
+						local sActorName = getActorName();
+					
+						manager_modbutton.sendModButtonMessage(sActorName, nMod);
+					
+						return true;
+					end
+				</script>
+			</number>
+			<buttonfield name="shrink">
+				<bounds>12,12,25,25</bounds>
+				<tooltip textres="statuses_shrink_Tooltip" />
+				<icon normal="red_arrow_icon" />
+				<font>button-white</font>
+				<script>local bThreatsMinimized = false;
+					
+					local aHideControls = {
+						"stattagg_list",
+						"stattagg_list_iadd",
+						"plus1",
+						"plus2",
+						"plus3",
+						"minus1",
+						"minus2",
+						"minus3",
+					};
+					
+					local aGMOnlyControls = {
+						"stattagg_list_iadd",	
+					};
+					
+					function isGMOnlyControl(sControl)
+						for _, sGMControl in ipairs(aGMOnlyControls) do
+							if sControl == sGMControl then
+								return true;
+							end
+						end
+					
+						return false;
+					end
+					
+					function setControlVisibleAndEnabled(sControl, bVisible)
+						if not window[sControl] then
+							return;
+						end
+					
+						if window[sControl].setVisible then
+							window[sControl].setVisible(bVisible);
+						end
+					
+						if window[sControl].setEnabled then
+							window[sControl].setEnabled(bVisible);
+						end
+					
+						if not bVisible and window[sControl].setValue then
+							window[sControl].setValue(0);
+						end
+					end
+					
+					function setThreatsControlsVisible(bVisible)
+						for _, sControl in ipairs(aHideControls) do
+							if isGMOnlyControl(sControl) then
+								setControlVisibleAndEnabled(sControl, bVisible and Session.IsHost);
+							else
+								setControlVisibleAndEnabled(sControl, bVisible);
+							end
+						end
+					end
+					
+					function onButtonPress()
+						bThreatsMinimized = not bThreatsMinimized;
+					
+						setThreatsControlsVisible(not bThreatsMinimized);
+					
+						if bThreatsMinimized then
+							window.setSize(200, 50);
+						else
+							window.setSize(300, 300);
+						end
+					end
+				</script>
+			</buttonfield>
+		</sheetdata>
+	</windowclass>
+</root>

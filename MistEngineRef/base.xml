@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root version="3.0" release="2">
+	<announcement>
+		<text>Unofficial Mist Engine for LitM</text>
+	</announcement>
+	<announcement>
+		<text>This is only a character sheet.</text>
+	</announcement>
+	<description>
+		<text>MistEngine LitM Ref</text>
+		<displayname>MistEngine LitM Ref</displayname>
+		<displayversion>1.2</displayversion>
+		<author>Mauled</author>
+	</description>
+	<importruleset source="CoreRPG" />
+	<importinfo>
+		<acceptfrom ruleset="CoreRPG" />
+	</importinfo>
+	<includefile source="campaign/char_invitem.xml" />
+	<includefile source="campaign/charsheet.xml" />
+	<includefile source="campaign/charsheet_abilities.xml" />
+	<includefile source="campaign/charsheet_inventory.xml" />
+	<includefile source="campaign/charsheet_main.xml" />
+	<includefile source="campaign/charsheet_notes.xml" />
+	<includefile source="campaign/fellowthemes.xml" />
+	<includefile source="campaign/statuses.xml" />
+	<includefile source="campaign/record_stattag.xml" />
+	<includefile source="campaign/threats.xml" />
+	<includefile source="campaign/details/backpackdetails.xml" />
+	<includefile source="campaign/details/fellowshipdetails.xml" />
+	<includefile source="campaign/details/fellowthemedetails.xml" />
+	<includefile source="campaign/details/stattagdetails.xml" />
+	<includefile source="campaign/details/stattagdetailsg.xml" />
+	<includefile source="campaign/details/themedetails.xml" />
+	<includefile source="campaign/details/threatdetails.xml" />
+	<icon name="action_minus" file="graphics/icons/action_save_failure.png" />
+	<icon name="red_arrow_icon" file="graphics/icons/red_arrow_icon.png" />
+	<icon name="scratchicon" file="graphics/icons/scratchicon.png" />
+	<icon name="sidebar_icon_recordtype_stattag" file="graphics/icons/scratchicon.png" />
+	<icon name="the_add" file="graphics/icons/button_add.png" />
+	<icon name="the_minus" file="graphics/icons/button_deleteconfirm.png" />
+	<includefile source="npc/npc.xml" />
+	<includefile source="npc/npc_main.xml" />
+	<includefile source="npc/details/npclimitsdetails.xml" />
+	<includefile source="npc/details/npctncdetails.xml" />
+	<includefile source="npc/details/npctnsdetails.xml" />
+	<script name="manager_action_twod6result" file="scripts/manager_action_twod6result.lua" />
+	<script name="manager_backpackmod" file="scripts/manager_backpackmod.lua" />
+	<script name="manager_desktoplist" file="scripts/manager_desktoplist.lua" />
+	<script name="manager_fellowshipmod" file="scripts/manager_fellowshipmod.lua" />
+	<script name="manager_modbutton" file="scripts/manager_modbutton.lua" />
+	<script name="manager_relationshipmod" file="scripts/manager_relationshipmod.lua" />
+	<script name="manager_resetstatus" file="scripts/manager_resetstatus.lua" />
+	<script name="manager_scratchmod" file="scripts/manager_scratchmod.lua" />
+	<script name="manager_statusmod" file="scripts/manager_statusmod.lua" />
+	<script name="manager_stattag_library" file="scripts/manager_stattag_library.lua" />
+	<script name="manager_themecheckboxmod" file="scripts/manager_themecheckboxmod.lua" />
+	<includefile source="strings_MistEngine LitM Ref.xml" />
+	<script name="RulesetWizardDiceRoller_MistEngineLitMRef_init" file="rulesetwizard/RulesetWizardDiceRoller_MistEngineLitMRef_init.lua" />
+	<script name="RulesetWizardDiceRoller" file="rulesetwizard/RulesetWizardDiceRoller.lua" />
+	<script name="RulesetWizard" file="rulesetwizard/RulesetWizard.lua" />
+	<includefile source="rulesetwizard/rswcombobox.xml" />
+	<includefile source="rulesetwizard/rswoptionlist.xml" />
+	<includefile source="rulesetwizard/rswdiefieldmodifier.xml" />
+</root>

@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="fellowshipdetails">
+		<placement>
+			<size height="490" width="240" />
+		</placement>
+		<sizelimits resize="both">
+			<maximum width="240" height="490" />
+			<minimum width="240" height="490" />
+		</sizelimits>
+		<sheetdata>
+			<button_idelete name="idelete">
+				<bounds>0,0,20,20</bounds>
+				<icon normal="button_delete" />
+				<font>button-white</font>
+			</button_idelete>
+			<stringfield name="StringField1">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,15,193,25</bounds>
+				<default textres="fellowshipdetails_StringField1_DefaultText" />
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField2">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,39,193,25</bounds>
+				<default textres="fellowshipdetails_StringField2_DefaultText" />
+				<font>reference-b</font>
+			</stringfield>
+			<stringcontrol name="quest_lbl">
+				<bounds>45,298,180,20</bounds>
+				<underline />
+				<static textres="fellowshipdetails_quest_lbl_LabelCaption" />
+				<font>narratorfont</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="abandon_lbl">
+				<bounds>45,270,60,20</bounds>
+				<static textres="fellowshipdetails_abandon_lbl_LabelCaption" />
+				<font>emotefont</font>
+				<readonly />
+			</stringcontrol>
+			<buttonfield name="abandon1_chk">
+				<bounds>106,271,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="abandon2_chk">
+				<bounds>123,271,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="abandon3_chk">
+				<bounds>140,271,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="improve1_chk">
+				<bounds>158,271,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="improve2_chk">
+				<bounds>175,271,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="Checkbox1">
+				<bounds>20,17,20,20</bounds>
+				<tooltip textres="fellowshipdetails_Checkbox1_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>--function getActorNode()
+					--	local node = window.getDatabaseNode();
+					--
+					--	while node do
+					--		if DB.getValue(node, "name", "") ~= "" then
+					--			return node;
+					--		end
+					--
+					--		node = node.getParent();
+					--	end
+					--
+					--	return nil;
+					--end
+					--
+					--function getActorNameFromNode(nodeActor)
+					--	if not nodeActor then
+					--		return "Unknown Actor";
+					--	end
+					--
+					--	local rActor = ActorManager.resolveActor(nodeActor);
+					--	if rActor then
+					--		return ActorManager.getDisplayName(rActor);
+					--	end
+					--
+					--	return DB.getValue(nodeActor, "name", "Unknown Actor");
+					--end
+					--
+					--function onValueChanged()
+					--	if getValue() ~= 1 then
+					--		return;
+					--	end
+					--
+					--	ModifierStack.addSlot("Relationship", 1);
+					--
+					--	local nodeActor = getActorNode();
+					--	local sActorName = getActorNameFromNode(nodeActor);
+					--
+					--	local msgOOB = {};
+					--	msgOOB.type = "relationshipmod";
+					--	msgOOB.sActorName = sActorName;
+					--	msgOOB.sModName = "Relationship";
+					--	msgOOB.nMod = 1;
+					--
+					--	if Session.IsHost then
+					--		manager_relationshipmod.handleRelationshipMod(msgOOB);
+					--	else
+					--		Comm.deliverOOBMessage(msgOOB, "");
+					--	end
+					--end
+					function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown fires before the checkbox changes.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking the box.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Relationship", 1);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						local msgOOB = {};
+						msgOOB.type = "relationshipmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sModName = "Relationship";
+						msgOOB.nMod = 1;
+					
+						if Session.IsHost then
+							manager_relationshipmod.handleRelationshipMod(msgOOB);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Leave empty.
+						-- Do not add ModifierStack or send OOB/chat code here.
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox2">
+				<bounds>20,67,20,20</bounds>
+				<tooltip textres="fellowshipdetails_Checkbox2_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown fires before the checkbox changes.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking the box.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Relationship", 1);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						local msgOOB = {};
+						msgOOB.type = "relationshipmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sModName = "Relationship";
+						msgOOB.nMod = 1;
+					
+						if Session.IsHost then
+							manager_relationshipmod.handleRelationshipMod(msgOOB);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Leave empty.
+						-- Do not add ModifierStack or send OOB/chat code here.
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox3">
+				<bounds>20,118,20,20</bounds>
+				<tooltip textres="fellowshipdetails_Checkbox3_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown fires before the checkbox changes.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking the box.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Relationship", 1);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						local msgOOB = {};
+						msgOOB.type = "relationshipmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sModName = "Relationship";
+						msgOOB.nMod = 1;
+					
+						if Session.IsHost then
+							manager_relationshipmod.handleRelationshipMod(msgOOB);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Leave empty.
+						-- Do not add ModifierStack or send OOB/chat code here.
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox4">
+				<bounds>20,166,20,20</bounds>
+				<tooltip textres="fellowshipdetails_Checkbox4_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown fires before the checkbox changes.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking the box.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Relationship", 1);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						local msgOOB = {};
+						msgOOB.type = "relationshipmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sModName = "Relationship";
+						msgOOB.nMod = 1;
+					
+						if Session.IsHost then
+							manager_relationshipmod.handleRelationshipMod(msgOOB);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Leave empty.
+						-- Do not add ModifierStack or send OOB/chat code here.
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox5">
+				<bounds>20,218,20,20</bounds>
+				<tooltip textres="fellowshipdetails_Checkbox5_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown fires before the checkbox changes.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking the box.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Relationship", 1);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						local msgOOB = {};
+						msgOOB.type = "relationshipmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sModName = "Relationship";
+						msgOOB.nMod = 1;
+					
+						if Session.IsHost then
+							manager_relationshipmod.handleRelationshipMod(msgOOB);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Leave empty.
+						-- Do not add ModifierStack or send OOB/chat code here.
+					end
+				</script>
+			</buttonfield>
+			<stringfield name="StringField3">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,65,193,25</bounds>
+				<default textres="fellowshipdetails_StringField3_DefaultText" />
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField4">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,89,193,25</bounds>
+				<default textres="fellowshipdetails_StringField4_DefaultText" />
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField5">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,115,193,25</bounds>
+				<default textres="fellowshipdetails_StringField5_DefaultText" />
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField6">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,139,193,25</bounds>
+				<default textres="fellowshipdetails_StringField6_DefaultText" />
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField7">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,165,193,25</bounds>
+				<default textres="fellowshipdetails_StringField7_DefaultText" />
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField8">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,189,193,25</bounds>
+				<default textres="fellowshipdetails_StringField8_DefaultText" />
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField9">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,215,193,25</bounds>
+				<default textres="fellowshipdetails_StringField9_DefaultText" />
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField10">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,239,193,25</bounds>
+				<default textres="fellowshipdetails_StringField10_DefaultText" />
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField11">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,325,193,25</bounds>
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField12">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,349,193,25</bounds>
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField13">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,373,193,25</bounds>
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField14">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>43,397,193,25</bounds>
+				<font>reference-b</font>
+			</stringfield>
+		</sheetdata>
+	</windowclass>
+</root>

@@ -1,0 +1,1865 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="themedetails">
+		<frame>border</frame>
+		<placement>
+			<size height="490" width="240" />
+		</placement>
+		<sizelimits resize="both">
+			<maximum width="240" height="490" />
+			<minimum width="240" height="490" />
+		</sizelimits>
+		<script>function onInit()
+				if Checkbox10 then
+					Checkbox10.setVisible(false);
+				end
+			
+				if Checkbox11 then
+					Checkbox11.setVisible(false);
+				end
+			
+				if Checkbox12 then
+					Checkbox12.setVisible(false);
+				end
+			
+				if Checkbox13 then
+					Checkbox13.setVisible(false);
+				end
+			
+				if Checkbox14 then
+					Checkbox14.setVisible(false);
+				end
+			
+				if Checkbox15 then
+					Checkbox15.setVisible(false);
+				end
+			
+				if Checkbox16 then
+					Checkbox16.setVisible(false);
+				end
+			
+				if Checkbox17 then
+					Checkbox17.setVisible(false);
+				end
+			
+				if Checkbox18 then
+					Checkbox18.setVisible(false);
+				end
+			end
+		</script>
+		<sheetdata>
+			<combobox name="themes_cbx">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>62,5,166,20</bounds>
+				<parameters>
+					<labelsres>themedetails_themes_cbx_Label_CIRCUMSTANCE__O_|themedetails_themes_cbx_Label_DEVOTION__O_|themedetails_themes_cbx_Label_PAST__O_|themedetails_themes_cbx_Label_PEOPLE__O_|themedetails_themes_cbx_Label_PERSONALITY__O_|themedetails_themes_cbx_Label_SKILL_OR_TRADE__O_|themedetails_themes_cbx_Label_TRAIT__O_|themedetails_themes_cbx_Label_DUTY__A_|themedetails_themes_cbx_Label_INFLUENCE__A_|themedetails_themes_cbx_Label_KNOWLEDGE__A_|themedetails_themes_cbx_Label_PRODIGIOUS_ABILITY__A_|themedetails_themes_cbx_Label_RELIC__A_|themedetails_themes_cbx_Label_UNCANNY_BEING__A_|themedetails_themes_cbx_Label_DESTINY__G_|themedetails_themes_cbx_Label_DOMINION__G_|themedetails_themes_cbx_Label_MASTERY__G_|themedetails_themes_cbx_Label_MONSTROSITY__G_|themedetails_themes_cbx_Label_COMPANION__V_|themedetails_themes_cbx_Label_MAGIC__V_|themedetails_themes_cbx_Label_POSSESSIONS__V_</labelsres>
+					<values>CIRCUMSTANCE|DEVOTION|PAST|PEOPLE|PERSONALITY|SKILL OR TRADE|TRAIT|DUTY|INFLUENCE|KNOWLEDGE|PRODIGIOUS ABILITY|RELIC|UNCANNY BEING|DESTINY|DOMINION|MASTERY|MONSTROSITY|COMPANION|MAGIC|POSSESSIONS</values>
+				</parameters>
+				<unsorted />
+				<listmaxsize>8</listmaxsize>
+			</combobox>
+			<stringcontrol name="type_lbl">
+				<bounds>5,4,50,20</bounds>
+				<underline />
+				<static textres="themedetails_type_lbl_LabelCaption" />
+				<font>reference-h</font>
+				<readonly />
+			</stringcontrol>
+			<stringfield name="StringField1">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>32,55,178,30</bounds>
+				<multilinespacing>15</multilinespacing>
+				<font>reference-b</font>
+			</stringfield>
+			<stringfield name="StringField2">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>32,85,178,30</bounds>
+				<multilinespacing>15</multilinespacing>
+			</stringfield>
+			<stringfield name="StringField3">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>32,115,178,30</bounds>
+				<multilinespacing>15</multilinespacing>
+			</stringfield>
+			<stringfield name="StringField4">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>32,145,178,30</bounds>
+				<multilinespacing>15</multilinespacing>
+			</stringfield>
+			<stringfield name="StringField5">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>32,175,178,30</bounds>
+				<multilinespacing>15</multilinespacing>
+			</stringfield>
+			<stringfield name="StringField6">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>32,205,178,30</bounds>
+				<multilinespacing>15</multilinespacing>
+			</stringfield>
+			<stringfield name="StringField7">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>32,235,178,30</bounds>
+				<multilinespacing>15</multilinespacing>
+			</stringfield>
+			<stringfield name="StringField8">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>32,287,178,30</bounds>
+				<multilinespacing>15</multilinespacing>
+			</stringfield>
+			<stringfield name="StringField9">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>32,317,178,30</bounds>
+				<multilinespacing>15</multilinespacing>
+			</stringfield>
+			<stringfield name="StringField11">
+				<frame name="border" />
+				<bounds>21,364,200,80</bounds>
+				<multilinespacing>17</multilinespacing>
+			</stringfield>
+			<stringcontrol name="power_lbl">
+				<bounds>25,32,100,20</bounds>
+				<underline />
+				<static textres="themedetails_power_lbl_LabelCaption" />
+				<font>reference-h</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="weakness_lbl">
+				<bounds>25,263,100,20</bounds>
+				<underline />
+				<static textres="themedetails_weakness_lbl_LabelCaption" />
+				<font>reference-h</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="quest_lbl">
+				<bounds>25,343,100,20</bounds>
+				<underline />
+				<static textres="themedetails_quest_lbl_LabelCaption" />
+				<font>reference-h</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="abandon_lbl">
+				<bounds>25,470,60,20</bounds>
+				<static textres="themedetails_abandon_lbl_LabelCaption" />
+				<font>emotefont</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="improve_lbl">
+				<bounds>87,470,60,20</bounds>
+				<static textres="themedetails_improve_lbl_LabelCaption" />
+				<font>emotefont</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="milestone_lbl">
+				<bounds>149,470,60,20</bounds>
+				<static textres="themedetails_milestone_lbl_LabelCaption" />
+				<font>emotefont</font>
+				<readonly />
+			</stringcontrol>
+			<buttonfield name="abandon1_chk">
+				<bounds>26,451,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="abandon2_chk">
+				<bounds>43,451,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="abandon3_chk">
+				<bounds>60,451,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="improve1_chk">
+				<bounds>89,451,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="improve2_chk">
+				<bounds>106,451,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="improve3_chk">
+				<bounds>123,451,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="milestone1_chk">
+				<bounds>151,451,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="milestone2_chk">
+				<bounds>168,451,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="milestone3_chk">
+				<bounds>185,451,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="Checkbox1">
+				<bounds>0,56,20,23</bounds>
+				<tooltip textres="themedetails_Checkbox1_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function sendModMessageToAll(sText)
+						local msg = {};
+						msg.font = "systemfont";
+						msg.text = sText;
+					
+						Comm.deliverChatMessage(msg);
+					end
+					
+					function onClickDown(button, x, y)
+						-- Only fire when currently unchecked.
+						-- Since this runs before FG toggles the checkbox,
+						-- getValue() == 0 means the click is checking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local sCheckboxName = getName();
+					
+						-- Example: Checkbox1 -&gt; StringField1
+						local sStringFieldName = sCheckboxName:gsub("Checkbox", "StringField");
+					
+						local sModName = "P";
+					
+						if window[sStringFieldName] then
+							sModName = window[sStringFieldName].getValue();
+						end
+					
+						if not sModName or sModName == "" then
+							sModName = sCheckboxName;
+						end
+					
+						local nodeActor = getActorNode();
+					
+						local sActorName = getActorNameFromNode(nodeActor);
+						local sActorNode = "";
+					
+						if nodeActor then
+							sActorNode = nodeActor.getPath();
+						end
+					
+						local nMod = 1;
+					
+						ModifierStack.addSlot(sModName, nMod);
+					
+						local msgOOB = {};
+						msgOOB.type = "themecheckboxmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sActorNode = sActorNode;
+						msgOOB.sModName = sModName;
+						msgOOB.nMod = nMod;
+					
+						if Session.IsHost then
+							sendModMessageToAll(sActorName .. " added " .. getModifierText(nMod) .. " from " .. sModName);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						-- Important: allow the checkbox to still toggle normally
+						return true;
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox2">
+				<bounds>0,86,20,23</bounds>
+				<tooltip textres="themedetails_Checkbox2_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function sendModMessageToAll(sText)
+						local msg = {};
+						msg.font = "systemfont";
+						msg.text = sText;
+					
+						Comm.deliverChatMessage(msg);
+					end
+					
+					function onClickDown(button, x, y)
+						-- Only fire when currently unchecked.
+						-- Since this runs before FG toggles the checkbox,
+						-- getValue() == 0 means the click is checking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local sCheckboxName = getName();
+					
+						-- Example: Checkbox1 -&gt; StringField1
+						local sStringFieldName = sCheckboxName:gsub("Checkbox", "StringField");
+					
+						local sModName = "P";
+					
+						if window[sStringFieldName] then
+							sModName = window[sStringFieldName].getValue();
+						end
+					
+						if not sModName or sModName == "" then
+							sModName = sCheckboxName;
+						end
+					
+						local nodeActor = getActorNode();
+					
+						local sActorName = getActorNameFromNode(nodeActor);
+						local sActorNode = "";
+					
+						if nodeActor then
+							sActorNode = nodeActor.getPath();
+						end
+					
+						local nMod = 1;
+					
+						ModifierStack.addSlot(sModName, nMod);
+					
+						local msgOOB = {};
+						msgOOB.type = "themecheckboxmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sActorNode = sActorNode;
+						msgOOB.sModName = sModName;
+						msgOOB.nMod = nMod;
+					
+						if Session.IsHost then
+							sendModMessageToAll(sActorName .. " added " .. getModifierText(nMod) .. " from " .. sModName);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						-- Important: allow the checkbox to still toggle normally
+						return true;
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox3">
+				<bounds>0,116,20,23</bounds>
+				<tooltip textres="themedetails_Checkbox3_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function sendModMessageToAll(sText)
+						local msg = {};
+						msg.font = "systemfont";
+						msg.text = sText;
+					
+						Comm.deliverChatMessage(msg);
+					end
+					
+					function onClickDown(button, x, y)
+						-- Only fire when currently unchecked.
+						-- Since this runs before FG toggles the checkbox,
+						-- getValue() == 0 means the click is checking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local sCheckboxName = getName();
+					
+						-- Example: Checkbox1 -&gt; StringField1
+						local sStringFieldName = sCheckboxName:gsub("Checkbox", "StringField");
+					
+						local sModName = "P";
+					
+						if window[sStringFieldName] then
+							sModName = window[sStringFieldName].getValue();
+						end
+					
+						if not sModName or sModName == "" then
+							sModName = sCheckboxName;
+						end
+					
+						local nodeActor = getActorNode();
+					
+						local sActorName = getActorNameFromNode(nodeActor);
+						local sActorNode = "";
+					
+						if nodeActor then
+							sActorNode = nodeActor.getPath();
+						end
+					
+						local nMod = 1;
+					
+						ModifierStack.addSlot(sModName, nMod);
+					
+						local msgOOB = {};
+						msgOOB.type = "themecheckboxmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sActorNode = sActorNode;
+						msgOOB.sModName = sModName;
+						msgOOB.nMod = nMod;
+					
+						if Session.IsHost then
+							sendModMessageToAll(sActorName .. " added " .. getModifierText(nMod) .. " from " .. sModName);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						-- Important: allow the checkbox to still toggle normally
+						return true;
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox4">
+				<bounds>0,146,20,23</bounds>
+				<tooltip textres="themedetails_Checkbox4_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function sendModMessageToAll(sText)
+						local msg = {};
+						msg.font = "systemfont";
+						msg.text = sText;
+					
+						Comm.deliverChatMessage(msg);
+					end
+					
+					function onClickDown(button, x, y)
+						-- Only fire when currently unchecked.
+						-- Since this runs before FG toggles the checkbox,
+						-- getValue() == 0 means the click is checking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local sCheckboxName = getName();
+					
+						-- Example: Checkbox1 -&gt; StringField1
+						local sStringFieldName = sCheckboxName:gsub("Checkbox", "StringField");
+					
+						local sModName = "P";
+					
+						if window[sStringFieldName] then
+							sModName = window[sStringFieldName].getValue();
+						end
+					
+						if not sModName or sModName == "" then
+							sModName = sCheckboxName;
+						end
+					
+						local nodeActor = getActorNode();
+					
+						local sActorName = getActorNameFromNode(nodeActor);
+						local sActorNode = "";
+					
+						if nodeActor then
+							sActorNode = nodeActor.getPath();
+						end
+					
+						local nMod = 1;
+					
+						ModifierStack.addSlot(sModName, nMod);
+					
+						local msgOOB = {};
+						msgOOB.type = "themecheckboxmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sActorNode = sActorNode;
+						msgOOB.sModName = sModName;
+						msgOOB.nMod = nMod;
+					
+						if Session.IsHost then
+							sendModMessageToAll(sActorName .. " added " .. getModifierText(nMod) .. " from " .. sModName);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						-- Important: allow the checkbox to still toggle normally
+						return true;
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox5">
+				<bounds>0,176,20,23</bounds>
+				<tooltip textres="themedetails_Checkbox5_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function sendModMessageToAll(sText)
+						local msg = {};
+						msg.font = "systemfont";
+						msg.text = sText;
+					
+						Comm.deliverChatMessage(msg);
+					end
+					
+					function onClickDown(button, x, y)
+						-- Only fire when currently unchecked.
+						-- Since this runs before FG toggles the checkbox,
+						-- getValue() == 0 means the click is checking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local sCheckboxName = getName();
+					
+						-- Example: Checkbox1 -&gt; StringField1
+						local sStringFieldName = sCheckboxName:gsub("Checkbox", "StringField");
+					
+						local sModName = "P";
+					
+						if window[sStringFieldName] then
+							sModName = window[sStringFieldName].getValue();
+						end
+					
+						if not sModName or sModName == "" then
+							sModName = sCheckboxName;
+						end
+					
+						local nodeActor = getActorNode();
+					
+						local sActorName = getActorNameFromNode(nodeActor);
+						local sActorNode = "";
+					
+						if nodeActor then
+							sActorNode = nodeActor.getPath();
+						end
+					
+						local nMod = 1;
+					
+						ModifierStack.addSlot(sModName, nMod);
+					
+						local msgOOB = {};
+						msgOOB.type = "themecheckboxmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sActorNode = sActorNode;
+						msgOOB.sModName = sModName;
+						msgOOB.nMod = nMod;
+					
+						if Session.IsHost then
+							sendModMessageToAll(sActorName .. " added " .. getModifierText(nMod) .. " from " .. sModName);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						-- Important: allow the checkbox to still toggle normally
+						return true;
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox6">
+				<bounds>0,206,20,23</bounds>
+				<tooltip textres="themedetails_Checkbox6_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function sendModMessageToAll(sText)
+						local msg = {};
+						msg.font = "systemfont";
+						msg.text = sText;
+					
+						Comm.deliverChatMessage(msg);
+					end
+					
+					function onClickDown(button, x, y)
+						-- Only fire when currently unchecked.
+						-- Since this runs before FG toggles the checkbox,
+						-- getValue() == 0 means the click is checking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local sCheckboxName = getName();
+					
+						-- Example: Checkbox1 -&gt; StringField1
+						local sStringFieldName = sCheckboxName:gsub("Checkbox", "StringField");
+					
+						local sModName = "P";
+					
+						if window[sStringFieldName] then
+							sModName = window[sStringFieldName].getValue();
+						end
+					
+						if not sModName or sModName == "" then
+							sModName = sCheckboxName;
+						end
+					
+						local nodeActor = getActorNode();
+					
+						local sActorName = getActorNameFromNode(nodeActor);
+						local sActorNode = "";
+					
+						if nodeActor then
+							sActorNode = nodeActor.getPath();
+						end
+					
+						local nMod = 1;
+					
+						ModifierStack.addSlot(sModName, nMod);
+					
+						local msgOOB = {};
+						msgOOB.type = "themecheckboxmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sActorNode = sActorNode;
+						msgOOB.sModName = sModName;
+						msgOOB.nMod = nMod;
+					
+						if Session.IsHost then
+							sendModMessageToAll(sActorName .. " added " .. getModifierText(nMod) .. " from " .. sModName);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						-- Important: allow the checkbox to still toggle normally
+						return true;
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox7">
+				<bounds>0,236,20,23</bounds>
+				<tooltip textres="themedetails_Checkbox7_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function sendModMessageToAll(sText)
+						local msg = {};
+						msg.font = "systemfont";
+						msg.text = sText;
+					
+						Comm.deliverChatMessage(msg);
+					end
+					
+					function onClickDown(button, x, y)
+						-- Only fire when currently unchecked.
+						-- Since this runs before FG toggles the checkbox,
+						-- getValue() == 0 means the click is checking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local sCheckboxName = getName();
+					
+						-- Example: Checkbox1 -&gt; StringField1
+						local sStringFieldName = sCheckboxName:gsub("Checkbox", "StringField");
+					
+						local sModName = "P";
+					
+						if window[sStringFieldName] then
+							sModName = window[sStringFieldName].getValue();
+						end
+					
+						if not sModName or sModName == "" then
+							sModName = sCheckboxName;
+						end
+					
+						local nodeActor = getActorNode();
+					
+						local sActorName = getActorNameFromNode(nodeActor);
+						local sActorNode = "";
+					
+						if nodeActor then
+							sActorNode = nodeActor.getPath();
+						end
+					
+						local nMod = 1;
+					
+						ModifierStack.addSlot(sModName, nMod);
+					
+						local msgOOB = {};
+						msgOOB.type = "themecheckboxmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sActorNode = sActorNode;
+						msgOOB.sModName = sModName;
+						msgOOB.nMod = nMod;
+					
+						if Session.IsHost then
+							sendModMessageToAll(sActorName .. " added " .. getModifierText(nMod) .. " from " .. sModName);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						-- Important: allow the checkbox to still toggle normally
+						return true;
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox8">
+				<bounds>0,288,20,23</bounds>
+				<tooltip textres="themedetails_Checkbox8_Tooltip" />
+				<state icon="the_minus" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function sendModMessageToAll(sText)
+						local msg = {};
+						msg.font = "systemfont";
+						msg.text = sText;
+					
+						Comm.deliverChatMessage(msg);
+					end
+					
+					function onClickDown(button, x, y)
+						-- Only fire when currently unchecked.
+						-- Since this runs before FG toggles the checkbox,
+						-- getValue() == 0 means the click is checking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local sCheckboxName = getName();
+					
+						-- Example: Checkbox1 -&gt; StringField1
+						local sStringFieldName = sCheckboxName:gsub("Checkbox", "StringField");
+					
+						local sModName = "W";
+					
+						if window[sStringFieldName] then
+							sModName = window[sStringFieldName].getValue();
+						end
+					
+						if not sModName or sModName == "" then
+							sModName = sCheckboxName;
+						end
+					
+						local nodeActor = getActorNode();
+					
+						local sActorName = getActorNameFromNode(nodeActor);
+						local sActorNode = "";
+					
+						if nodeActor then
+							sActorNode = nodeActor.getPath();
+						end
+					
+						local nMod = -1;
+					
+						ModifierStack.addSlot(sModName, nMod);
+					
+						local msgOOB = {};
+						msgOOB.type = "themecheckboxmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sActorNode = sActorNode;
+						msgOOB.sModName = sModName;
+						msgOOB.nMod = nMod;
+					
+						if Session.IsHost then
+							sendModMessageToAll(sActorName .. " added " .. getModifierText(nMod) .. " from " .. sModName);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						-- Important: allow the checkbox to still toggle normally
+						return true;
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox9">
+				<bounds>0,318,20,23</bounds>
+				<tooltip textres="themedetails_Checkbox9_Tooltip" />
+				<state icon="the_minus" />
+				<state icon="button_checkon" />
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function getModifierText(nMod)
+						if nMod &gt;= 0 then
+							return "+" .. nMod;
+						end
+					
+						return tostring(nMod);
+					end
+					
+					function sendModMessageToAll(sText)
+						local msg = {};
+						msg.font = "systemfont";
+						msg.text = sText;
+					
+						Comm.deliverChatMessage(msg);
+					end
+					
+					function onClickDown(button, x, y)
+						-- Only fire when currently unchecked.
+						-- Since this runs before FG toggles the checkbox,
+						-- getValue() == 0 means the click is checking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local sCheckboxName = getName();
+					
+						-- Example: Checkbox1 -&gt; StringField1
+						local sStringFieldName = sCheckboxName:gsub("Checkbox", "StringField");
+					
+						local sModName = "W";
+					
+						if window[sStringFieldName] then
+							sModName = window[sStringFieldName].getValue();
+						end
+					
+						if not sModName or sModName == "" then
+							sModName = sCheckboxName;
+						end
+					
+						local nodeActor = getActorNode();
+					
+						local sActorName = getActorNameFromNode(nodeActor);
+						local sActorNode = "";
+					
+						if nodeActor then
+							sActorNode = nodeActor.getPath();
+						end
+					
+						local nMod = -1;
+					
+						ModifierStack.addSlot(sModName, nMod);
+					
+						local msgOOB = {};
+						msgOOB.type = "themecheckboxmod";
+						msgOOB.sActorName = sActorName;
+						msgOOB.sActorNode = sActorNode;
+						msgOOB.sModName = sModName;
+						msgOOB.nMod = nMod;
+					
+						if Session.IsHost then
+							sendModMessageToAll(sActorName .. " added " .. getModifierText(nMod) .. " from " .. sModName);
+						else
+							Comm.deliverOOBMessage(msgOOB, "");
+						end
+					
+						-- Important: allow the checkbox to still toggle normally
+						return true;
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="scratch_item1">
+				<bounds>216,58,20,20</bounds>
+				<tooltip textres="themedetails_scratch_item1_Tooltip" />
+				<state icon="scratchicon" />
+				<state icon="action_damage" />
+				<script>function getScratchNumber()
+						local sControlName = getName() or "";
+					
+						local sNumber = sControlName:match("scratch_item(%d+)");
+						if sNumber then
+							return tonumber(sNumber);
+						end
+					
+						return nil;
+					end
+					
+					function getScratchName(nScratch)
+						if not nScratch then
+							return "Scratch";
+						end
+					
+						local sFieldName = "StringField" .. nScratch;
+					
+						if window[sFieldName] then
+							local sValue = window[sFieldName].getValue();
+					
+							if sValue and sValue ~= "" then
+								return sValue;
+							end
+						end
+					
+						return "Scratch " .. nScratch;
+					end
+					
+					function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if nodeActor then
+							local rActor = ActorManager.resolveActor(nodeActor);
+							if rActor then
+								return ActorManager.getDisplayName(rActor);
+							end
+					
+							local sName = DB.getValue(nodeActor, "name", "");
+							if sName ~= "" then
+								return sName;
+							end
+						end
+					
+						return User.getCurrentIdentity() or "Unknown Actor";
+					end
+					
+					function sendScratchModOOB(sActorName, sScratchName, nMod)
+						local msgOOB = {};
+						msgOOB.type = "scratchmod";
+						msgOOB.sActorName = sActorName or "Unknown Actor";
+						msgOOB.sScratchName = sScratchName or "Scratch";
+						msgOOB.nMod = nMod or 3;
+					
+						Comm.deliverOOBMessage(msgOOB, "");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown runs before Fantasy Grounds changes the checkbox value.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local nMod = 3;
+					
+						local nScratch = getScratchNumber();
+						local sScratchName = getScratchName(nScratch);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						ModifierStack.addSlot(sScratchName, nMod);
+					
+						sendScratchModOOB(sActorName, sScratchName, nMod);
+					
+						-- Needed for your checkbox behavior.
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Do not put modifier or OOB code here.
+						-- This fires on every open copy of the same shared sheet.
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="scratch_item2">
+				<bounds>216,88,20,20</bounds>
+				<tooltip textres="themedetails_scratch_item2_Tooltip" />
+				<state icon="scratchicon" />
+				<state icon="action_damage" />
+				<script>function getScratchNumber()
+						local sControlName = getName() or "";
+					
+						local sNumber = sControlName:match("scratch_item(%d+)");
+						if sNumber then
+							return tonumber(sNumber);
+						end
+					
+						return nil;
+					end
+					
+					function getScratchName(nScratch)
+						if not nScratch then
+							return "Scratch";
+						end
+					
+						local sFieldName = "StringField" .. nScratch;
+					
+						if window[sFieldName] then
+							local sValue = window[sFieldName].getValue();
+					
+							if sValue and sValue ~= "" then
+								return sValue;
+							end
+						end
+					
+						return "Scratch " .. nScratch;
+					end
+					
+					function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if nodeActor then
+							local rActor = ActorManager.resolveActor(nodeActor);
+							if rActor then
+								return ActorManager.getDisplayName(rActor);
+							end
+					
+							local sName = DB.getValue(nodeActor, "name", "");
+							if sName ~= "" then
+								return sName;
+							end
+						end
+					
+						return User.getCurrentIdentity() or "Unknown Actor";
+					end
+					
+					function sendScratchModOOB(sActorName, sScratchName, nMod)
+						local msgOOB = {};
+						msgOOB.type = "scratchmod";
+						msgOOB.sActorName = sActorName or "Unknown Actor";
+						msgOOB.sScratchName = sScratchName or "Scratch";
+						msgOOB.nMod = nMod or 3;
+					
+						Comm.deliverOOBMessage(msgOOB, "");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown runs before Fantasy Grounds changes the checkbox value.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local nMod = 3;
+					
+						local nScratch = getScratchNumber();
+						local sScratchName = getScratchName(nScratch);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						ModifierStack.addSlot(sScratchName, nMod);
+					
+						sendScratchModOOB(sActorName, sScratchName, nMod);
+					
+						-- Needed for your checkbox behavior.
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Do not put modifier or OOB code here.
+						-- This fires on every open copy of the same shared sheet.
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="scratch_item3">
+				<bounds>216,118,20,20</bounds>
+				<tooltip textres="themedetails_scratch_item3_Tooltip" />
+				<state icon="scratchicon" />
+				<state icon="action_damage" />
+				<script>function getScratchNumber()
+						local sControlName = getName() or "";
+					
+						local sNumber = sControlName:match("scratch_item(%d+)");
+						if sNumber then
+							return tonumber(sNumber);
+						end
+					
+						return nil;
+					end
+					
+					function getScratchName(nScratch)
+						if not nScratch then
+							return "Scratch";
+						end
+					
+						local sFieldName = "StringField" .. nScratch;
+					
+						if window[sFieldName] then
+							local sValue = window[sFieldName].getValue();
+					
+							if sValue and sValue ~= "" then
+								return sValue;
+							end
+						end
+					
+						return "Scratch " .. nScratch;
+					end
+					
+					function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if nodeActor then
+							local rActor = ActorManager.resolveActor(nodeActor);
+							if rActor then
+								return ActorManager.getDisplayName(rActor);
+							end
+					
+							local sName = DB.getValue(nodeActor, "name", "");
+							if sName ~= "" then
+								return sName;
+							end
+						end
+					
+						return User.getCurrentIdentity() or "Unknown Actor";
+					end
+					
+					function sendScratchModOOB(sActorName, sScratchName, nMod)
+						local msgOOB = {};
+						msgOOB.type = "scratchmod";
+						msgOOB.sActorName = sActorName or "Unknown Actor";
+						msgOOB.sScratchName = sScratchName or "Scratch";
+						msgOOB.nMod = nMod or 3;
+					
+						Comm.deliverOOBMessage(msgOOB, "");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown runs before Fantasy Grounds changes the checkbox value.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local nMod = 3;
+					
+						local nScratch = getScratchNumber();
+						local sScratchName = getScratchName(nScratch);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						ModifierStack.addSlot(sScratchName, nMod);
+					
+						sendScratchModOOB(sActorName, sScratchName, nMod);
+					
+						-- Needed for your checkbox behavior.
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Do not put modifier or OOB code here.
+						-- This fires on every open copy of the same shared sheet.
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="scratch_item4">
+				<bounds>216,148,20,20</bounds>
+				<tooltip textres="themedetails_scratch_item4_Tooltip" />
+				<state icon="scratchicon" />
+				<state icon="action_damage" />
+				<script>function getScratchNumber()
+						local sControlName = getName() or "";
+					
+						local sNumber = sControlName:match("scratch_item(%d+)");
+						if sNumber then
+							return tonumber(sNumber);
+						end
+					
+						return nil;
+					end
+					
+					function getScratchName(nScratch)
+						if not nScratch then
+							return "Scratch";
+						end
+					
+						local sFieldName = "StringField" .. nScratch;
+					
+						if window[sFieldName] then
+							local sValue = window[sFieldName].getValue();
+					
+							if sValue and sValue ~= "" then
+								return sValue;
+							end
+						end
+					
+						return "Scratch " .. nScratch;
+					end
+					
+					function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if nodeActor then
+							local rActor = ActorManager.resolveActor(nodeActor);
+							if rActor then
+								return ActorManager.getDisplayName(rActor);
+							end
+					
+							local sName = DB.getValue(nodeActor, "name", "");
+							if sName ~= "" then
+								return sName;
+							end
+						end
+					
+						return User.getCurrentIdentity() or "Unknown Actor";
+					end
+					
+					function sendScratchModOOB(sActorName, sScratchName, nMod)
+						local msgOOB = {};
+						msgOOB.type = "scratchmod";
+						msgOOB.sActorName = sActorName or "Unknown Actor";
+						msgOOB.sScratchName = sScratchName or "Scratch";
+						msgOOB.nMod = nMod or 3;
+					
+						Comm.deliverOOBMessage(msgOOB, "");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown runs before Fantasy Grounds changes the checkbox value.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local nMod = 3;
+					
+						local nScratch = getScratchNumber();
+						local sScratchName = getScratchName(nScratch);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						ModifierStack.addSlot(sScratchName, nMod);
+					
+						sendScratchModOOB(sActorName, sScratchName, nMod);
+					
+						-- Needed for your checkbox behavior.
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Do not put modifier or OOB code here.
+						-- This fires on every open copy of the same shared sheet.
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="scratch_item5">
+				<bounds>216,178,20,20</bounds>
+				<tooltip textres="themedetails_scratch_item5_Tooltip" />
+				<state icon="scratchicon" />
+				<state icon="action_damage" />
+				<script>function getScratchNumber()
+						local sControlName = getName() or "";
+					
+						local sNumber = sControlName:match("scratch_item(%d+)");
+						if sNumber then
+							return tonumber(sNumber);
+						end
+					
+						return nil;
+					end
+					
+					function getScratchName(nScratch)
+						if not nScratch then
+							return "Scratch";
+						end
+					
+						local sFieldName = "StringField" .. nScratch;
+					
+						if window[sFieldName] then
+							local sValue = window[sFieldName].getValue();
+					
+							if sValue and sValue ~= "" then
+								return sValue;
+							end
+						end
+					
+						return "Scratch " .. nScratch;
+					end
+					
+					function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if nodeActor then
+							local rActor = ActorManager.resolveActor(nodeActor);
+							if rActor then
+								return ActorManager.getDisplayName(rActor);
+							end
+					
+							local sName = DB.getValue(nodeActor, "name", "");
+							if sName ~= "" then
+								return sName;
+							end
+						end
+					
+						return User.getCurrentIdentity() or "Unknown Actor";
+					end
+					
+					function sendScratchModOOB(sActorName, sScratchName, nMod)
+						local msgOOB = {};
+						msgOOB.type = "scratchmod";
+						msgOOB.sActorName = sActorName or "Unknown Actor";
+						msgOOB.sScratchName = sScratchName or "Scratch";
+						msgOOB.nMod = nMod or 3;
+					
+						Comm.deliverOOBMessage(msgOOB, "");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown runs before Fantasy Grounds changes the checkbox value.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local nMod = 3;
+					
+						local nScratch = getScratchNumber();
+						local sScratchName = getScratchName(nScratch);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						ModifierStack.addSlot(sScratchName, nMod);
+					
+						sendScratchModOOB(sActorName, sScratchName, nMod);
+					
+						-- Needed for your checkbox behavior.
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Do not put modifier or OOB code here.
+						-- This fires on every open copy of the same shared sheet.
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="scratch_item6">
+				<bounds>216,208,20,20</bounds>
+				<tooltip textres="themedetails_scratch_item6_Tooltip" />
+				<state icon="scratchicon" />
+				<state icon="action_damage" />
+				<script>function getScratchNumber()
+						local sControlName = getName() or "";
+					
+						local sNumber = sControlName:match("scratch_item(%d+)");
+						if sNumber then
+							return tonumber(sNumber);
+						end
+					
+						return nil;
+					end
+					
+					function getScratchName(nScratch)
+						if not nScratch then
+							return "Scratch";
+						end
+					
+						local sFieldName = "StringField" .. nScratch;
+					
+						if window[sFieldName] then
+							local sValue = window[sFieldName].getValue();
+					
+							if sValue and sValue ~= "" then
+								return sValue;
+							end
+						end
+					
+						return "Scratch " .. nScratch;
+					end
+					
+					function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if nodeActor then
+							local rActor = ActorManager.resolveActor(nodeActor);
+							if rActor then
+								return ActorManager.getDisplayName(rActor);
+							end
+					
+							local sName = DB.getValue(nodeActor, "name", "");
+							if sName ~= "" then
+								return sName;
+							end
+						end
+					
+						return User.getCurrentIdentity() or "Unknown Actor";
+					end
+					
+					function sendScratchModOOB(sActorName, sScratchName, nMod)
+						local msgOOB = {};
+						msgOOB.type = "scratchmod";
+						msgOOB.sActorName = sActorName or "Unknown Actor";
+						msgOOB.sScratchName = sScratchName or "Scratch";
+						msgOOB.nMod = nMod or 3;
+					
+						Comm.deliverOOBMessage(msgOOB, "");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown runs before Fantasy Grounds changes the checkbox value.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local nMod = 3;
+					
+						local nScratch = getScratchNumber();
+						local sScratchName = getScratchName(nScratch);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						ModifierStack.addSlot(sScratchName, nMod);
+					
+						sendScratchModOOB(sActorName, sScratchName, nMod);
+					
+						-- Needed for your checkbox behavior.
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Do not put modifier or OOB code here.
+						-- This fires on every open copy of the same shared sheet.
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="scratch_item7">
+				<bounds>216,238,20,20</bounds>
+				<tooltip textres="themedetails_scratch_item7_Tooltip" />
+				<state icon="scratchicon" />
+				<state icon="action_damage" />
+				<script>function getScratchNumber()
+						local sControlName = getName() or "";
+					
+						local sNumber = sControlName:match("scratch_item(%d+)");
+						if sNumber then
+							return tonumber(sNumber);
+						end
+					
+						return nil;
+					end
+					
+					function getScratchName(nScratch)
+						if not nScratch then
+							return "Scratch";
+						end
+					
+						local sFieldName = "StringField" .. nScratch;
+					
+						if window[sFieldName] then
+							local sValue = window[sFieldName].getValue();
+					
+							if sValue and sValue ~= "" then
+								return sValue;
+							end
+						end
+					
+						return "Scratch " .. nScratch;
+					end
+					
+					function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if nodeActor then
+							local rActor = ActorManager.resolveActor(nodeActor);
+							if rActor then
+								return ActorManager.getDisplayName(rActor);
+							end
+					
+							local sName = DB.getValue(nodeActor, "name", "");
+							if sName ~= "" then
+								return sName;
+							end
+						end
+					
+						return User.getCurrentIdentity() or "Unknown Actor";
+					end
+					
+					function sendScratchModOOB(sActorName, sScratchName, nMod)
+						local msgOOB = {};
+						msgOOB.type = "scratchmod";
+						msgOOB.sActorName = sActorName or "Unknown Actor";
+						msgOOB.sScratchName = sScratchName or "Scratch";
+						msgOOB.nMod = nMod or 3;
+					
+						Comm.deliverOOBMessage(msgOOB, "");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown runs before Fantasy Grounds changes the checkbox value.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking it.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local nMod = 3;
+					
+						local nScratch = getScratchNumber();
+						local sScratchName = getScratchName(nScratch);
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						ModifierStack.addSlot(sScratchName, nMod);
+					
+						sendScratchModOOB(sActorName, sScratchName, nMod);
+					
+						-- Needed for your checkbox behavior.
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Do not put modifier or OOB code here.
+						-- This fires on every open copy of the same shared sheet.
+					end
+				</script>
+			</buttonfield>
+			<combobox name="mightlvl_cbx">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>142,32,86,20</bounds>
+				<parameters>
+					<labelsres>themedetails_mightlvl_cbx_Label_Origin|themedetails_mightlvl_cbx_Label_Adventure|themedetails_mightlvl_cbx_Label_Greatness</labelsres>
+					<values>origin|adventure|greatness</values>
+				</parameters>
+				<unsorted />
+			</combobox>
+			<button_idelete name="idelete">
+				<bounds>52,2,20,20</bounds>
+				<icon normal="button_delete" />
+				<font>button-white</font>
+			</button_idelete>
+		</sheetdata>
+	</windowclass>
+</root>

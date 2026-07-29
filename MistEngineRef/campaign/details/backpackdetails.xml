@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="backpackdetails">
+		<placement>
+			<size height="30" width="260" />
+		</placement>
+		<sheetdata>
+			<stringfield name="item_string">
+				<frame name="border" offset="2,0,0,0" />
+				<bounds>52,3,183,25</bounds>
+				<controlline />
+				<lineoffset>-1</lineoffset>
+				<font>reference-b</font>
+			</stringfield>
+			<buttonfield name="Checkbox1">
+				<bounds>26,6,20,20</bounds>
+				<tooltip textres="backpackdetails_Checkbox1_Tooltip" />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>--function getActorNode()
+					--	local node = window.getDatabaseNode();
+					--
+					--	while node do
+					--		if DB.getValue(node, "name", "") ~= "" then
+					--			return node;
+					--		end
+					--
+					--		node = node.getParent();
+					--	end
+					--
+					--	return nil;
+					--end
+					--
+					--function getActorNameFromNode(nodeActor)
+					--	if not nodeActor then
+					--		return "Unknown Actor";
+					--	end
+					--
+					--	local rActor = ActorManager.resolveActor(nodeActor);
+					--	if rActor then
+					--		return ActorManager.getDisplayName(rActor);
+					--	end
+					--
+					--	return DB.getValue(nodeActor, "name", "Unknown Actor");
+					--end
+					--
+					--function onValueChanged()
+					--	if getValue() ~= 1 then
+					--		return;
+					--	end
+					--
+					--	local nMod = 1;
+					--	local sItemName = "Item";
+					--
+					--	if window.item_string then
+					--		sItemName = window.item_string.getValue();
+					--	end
+					--
+					--	if sItemName == "" then
+					--		sItemName = "Item";
+					--	end
+					--
+					--	local nodeActor = getActorNode();
+					--	local sActorName = getActorNameFromNode(nodeActor);
+					--
+					--	ModifierStack.addSlot(sItemName, nMod);
+					--
+					--	manager_backpackmod.sendBackpackItemModMessage(sActorName, sItemName, nMod);
+					--end
+					function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown fires before the checkbox changes.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking the box.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local nMod = 1;
+						local sItemName = "Item";
+					
+						if window.item_string then
+							sItemName = window.item_string.getValue();
+						end
+					
+						if not sItemName or sItemName == "" then
+							sItemName = "Item";
+						end
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						ModifierStack.addSlot(sItemName, nMod);
+					
+						manager_backpackmod.sendBackpackItemModMessage(sActorName, sItemName, nMod);
+					
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Leave empty.
+						-- Do not add ModifierStack or send messages here.
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="item_available_chk">
+				<bounds>5,6,20,20</bounds>
+				<tooltip textres="backpackdetails_item_available_chk_Tooltip" />
+				<state icon="token_empty" />
+				<state icon="char_inv_carried_header" />
+			</buttonfield>
+			<buttonfield name="scratch_item_chk">
+				<bounds>236,6,20,20</bounds>
+				<tooltip textres="backpackdetails_scratch_item_chk_Tooltip" />
+				<state icon="scratchicon" />
+				<state icon="action_damage" />
+				<script>--function getActorNode()
+					--	local node = window.getDatabaseNode();
+					--
+					--	while node do
+					--		if DB.getValue(node, "name", "") ~= "" then
+					--			return node;
+					--		end
+					--
+					--		node = node.getParent();
+					--	end
+					--
+					--	return nil;
+					--end
+					--
+					--function getActorNameFromNode(nodeActor)
+					--	if not nodeActor then
+					--		return "Unknown Actor";
+					--	end
+					--
+					--	local rActor = ActorManager.resolveActor(nodeActor);
+					--	if rActor then
+					--		return ActorManager.getDisplayName(rActor);
+					--	end
+					--
+					--	return DB.getValue(nodeActor, "name", "Unknown Actor");
+					--end
+					--
+					--function onValueChanged()
+					--	if getValue() ~= 1 then
+					--		return;
+					--	end
+					--
+					--	local nMod = 3;
+					--	local sItemName = "Item";
+					--
+					--	if window.item_string then
+					--		sItemName = window.item_string.getValue();
+					--	end
+					--
+					--	if sItemName == "" then
+					--		sItemName = "Item";
+					--	end
+					--
+					--	local nodeActor = getActorNode();
+					--	local sActorName = getActorNameFromNode(nodeActor);
+					--
+					--	ModifierStack.addSlot(sItemName, nMod);
+					--
+					--	manager_backpackmod.sendScratchItemModMessage(sActorName, sItemName, nMod);
+					--end
+					function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function onClickDown(button, x, y)
+						-- onClickDown fires before the checkbox changes.
+						-- getValue() == 0 means this click is checking the box.
+						-- getValue() == 1 means this click is unchecking the box.
+						if getValue() ~= 0 then
+							return true;
+						end
+					
+						local nMod = 3;
+						local sItemName = "Item";
+					
+						if window.item_string then
+							sItemName = window.item_string.getValue();
+						end
+					
+						if not sItemName or sItemName == "" then
+							sItemName = "Item";
+						end
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						ModifierStack.addSlot(sItemName, nMod);
+					
+						manager_backpackmod.sendScratchItemModMessage(sActorName, sItemName, nMod);
+					
+						return true;
+					end
+					
+					function onValueChanged()
+						-- Leave empty.
+						-- Do not add ModifierStack or send messages here.
+					end
+				</script>
+			</buttonfield>
+			<button_idelete name="idelete">
+				<bounds>118,5,20,20</bounds>
+				<icon normal="button_delete" />
+				<font>button-white</font>
+			</button_idelete>
+		</sheetdata>
+	</windowclass>
+</root>

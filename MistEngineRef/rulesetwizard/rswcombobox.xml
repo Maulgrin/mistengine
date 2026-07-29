@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<template name="rsw_combobox_legacy">
+		<simplestring>
+			<readonly />
+			<listdirection mergerule="replace">down</listdirection>
+			<script file="rulesetwizard/rswcombobox.lua"/>
+		</simplestring>
+	</template>
+
+	<template name="combobox_button_legacy">
+		<genericcontrol>
+			<anchored width="15" height="10">
+				<top />
+				<right />
+			</anchored>
+			<invisible />
+			<script file="rulesetwizard/rswcomboboxbutton.lua"/>
+		</genericcontrol>
+	</template>
+	<template name="combobox_list_legacy">
+		<windowlist>
+			<anchored height="50">
+				<right />
+				<bottom />
+			</anchored>
+			<frame name="combobox_list" offset="2,2,2,2" />
+			<datasource/>
+			<class>combobox_item_legacy</class>
+			<invisible/>
+			<sortby><control>Order</control></sortby>
+			<script file="rulesetwizard/rswcomboboxlist.lua" />
+		</windowlist>
+	</template>
+ 	<template name="combobox_list_sorted_legacy">
+		<combobox_list_legacy>
+			<sortby merge="replace"><control>Text</control></sortby>
+		</combobox_list_legacy>
+	</template>        
+   <windowclass name="combobox_item_legacy">
+		<script file="rulesetwizard/rswcomboboxitem.lua" />
+		<sheetdata>
+			<hnc name="Order" />
+			<hsc name="Value" />
+
+			<anchor_listitem_right_flat />
+
+			<button_idelete name="idelete">
+				<anchored>
+					<top />
+					<right parent="rightanchor" anchor="left" relation="relative" />
+				</anchored>
+			</button_idelete>
+			<simplestring name="Text">
+				<anchored position="insidetopleft" height="20">
+					<right parent="rightanchor" anchor="left" relation="relative" />
+				</anchored>
+				<readonly />
+				<script>
+					function onClickDown()
+						return true;
+					end
+					function onClickRelease()
+						window.clicked();
+					end
+				</script>
+			</simplestring>
+		</sheetdata>
+	</windowclass>
+	<template name="combobox_scrollbar_legacy">
+		<scrollbarcontrol>
+			<anchored position="insideleft" width="10" />
+			<normal name="combobox_scrollbar" />
+		</scrollbarcontrol>
+	</template>       
+</root>

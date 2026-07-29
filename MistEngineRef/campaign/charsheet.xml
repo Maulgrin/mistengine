@@ -1,0 +1,885 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="charsheet">
+		<frame>charsheet</frame>
+		<placement>
+			<size height="610" width="1024" />
+		</placement>
+		<playercontrol />
+		<softclose />
+		<sizelimits resize="both">
+			<minimum width="1024" height="610" />
+			<dynamic />
+		</sizelimits>
+		<tooltip field="name" />
+		<minimize>minimized_npc</minimize>
+		<script>--function onInit()
+			---- Hide
+			--	if backpack_list then
+			--		backpack_list.setVisible(false);
+			--	end
+			--
+			--	if backpack_list_iadd then
+			--		backpack_list_iadd.setVisible(false);
+			--	end
+			--
+			--	if backpack_list_iedit then
+			--		backpack_list_iedit.setVisible(false);
+			--	end
+			--	
+			--	if stattag_list_iadd then
+			--		stattag_list_iadd.setVisible(false);
+			--	end
+			--
+			--	if stattag_list_iedit then
+			--		stattag_list_iedit.setVisible(false);
+			--	end
+			--	
+			--	if stattag_list then
+			--		stattag_list.setVisible(false);
+			--	end
+			--	
+			--	if backpack_lbl then
+			--		backpack_lbl.setVisible(false);
+			--	end
+			--
+			--	if stattags_lbl then
+			--		stattags_lbl.setVisible(false);
+			--	end
+			--	
+			--	if fellowship_list then
+			--		fellowship_list.setVisible(false);
+			--	end
+			--	
+			--	if fellowship_list_iadd then
+			--		fellowship_list_iadd.setVisible(false);
+			--	end
+			--
+			--	if fellowship_list_iedit then
+			--		fellowship_list_iedit.setVisible(false);
+			--	end
+			--	
+			--	if theme_list_iadd then
+			--		theme_list_iadd.setVisible(false);
+			--	end
+			--
+			--	if theme_list_iedit then
+			--		theme_list_iedit.setVisible(false);
+			--	end
+			---- Show
+			--	if theme_list then
+			--		theme_list.setVisible(true);
+			--	end
+			--end
+		</script>
+		<sheetdata>
+			<picture_charsheet name="portrait">
+				<bounds>20,33,45,45</bounds>
+			</picture_charsheet>
+			<genericcontrol name="overviewframe">
+				<frame name="groupbox" />
+				<anchored>
+					<left anchor="right" parent="portrait" offset="8" />
+					<top offset="33" />
+					<size>
+						<width>230</width>
+						<height>45</height>
+					</size>
+				</anchored>
+			</genericcontrol>
+			<stringfield name="name">
+				<anchored>
+					<left anchor="left" parent="overviewframe" offset="16" />
+					<top offset="41" />
+					<size>
+						<width>201</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<controlline />
+				<lineoffset>-1</lineoffset>
+				<font>sheettext</font>
+			</stringfield>
+			<stringcontrol name="label_name">
+				<anchored>
+					<left anchor="left" parent="overviewframe" offset="17" />
+					<top offset="58" />
+					<size>
+						<width>39</width>
+						<height>14</height>
+					</size>
+				</anchored>
+				<static textres="charsheet_label_name_LabelCaption" />
+				<font>sheetlabelinline</font>
+				<readonly />
+			</stringcontrol>
+			<close_base name="button_close">
+				<bounds>-45,0,24,24</bounds>
+				<icon normal="button_close" pressed="button_close_down" hover="button_close_hover" />
+				<font>button-white</font>
+			</close_base>
+			<genericcontrol name="resize">
+				<bounds>-23,-22,18,18</bounds>
+				<invisible />
+				<disabled />
+				<icon>window_resize</icon>
+			</genericcontrol>
+			<windowmenubar_charsheet name="windowmenubar">
+				<bounds>15,5,-44,24</bounds>
+			</windowmenubar_charsheet>
+			<buttoncontrol name="theroll_btn">
+				<bounds>335,35,45,45</bounds>
+				<tooltip textres="charsheet_theroll_btn_Tooltip" />
+				<textres>charsheet_theroll_btn_ButtonCaption</textres>
+				<icon normal="action_roll" />
+				<font>button-white</font>
+				<script>function onButtonPress()
+						local nodeChar = window.getDatabaseNode();
+						if not nodeChar then
+							return;
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeChar);
+					
+						local nMod = ModifierStack.getSum();
+						ModifierStack.reset();
+					
+						local rRoll = {};
+						rRoll.sType = "twod6result";
+					--	rRoll.sDesc = "Action";
+					--
+					--	if nMod &gt;= 0 then
+					--		rRoll.sDesc = rRoll.sDesc .. " at +" .. nMod .. "";
+					--	else
+					--		rRoll.sDesc = rRoll.sDesc .. " at " .. nMod .. "";
+					--	end
+					
+						rRoll.aDice = { "d6", "d6" };
+						rRoll.nMod = nMod;
+					
+						ActionsManager.performAction(nil, rActor, rRoll);
+					end
+					
+					
+					---- Detailed Mods
+					--function onButtonPress()
+					--	local nodeChar = window.getDatabaseNode();
+					--	if not nodeChar then
+					--		return;
+					--	end
+					--
+					--	local rActor = ActorManager.resolveActor(nodeChar);
+					--
+					--	local nMod = ModifierStack.getSum();
+					--	local vModStack = ModifierStack.getStack();
+					--
+					--	local rRoll = {};
+					--	rRoll.sType = "twod6result";
+					--	rRoll.sDesc = "Action";
+					--
+					--	-- Show individual modifier information
+					--	if vModStack then
+					--		if type(vModStack) == "table" then
+					--			if #vModStack &gt; 0 then
+					--				rRoll.sDesc = rRoll.sDesc .. "\nModifiers:";
+					--
+					--				for _, vMod in ipairs(vModStack) do
+					--					local sDesc = vMod.sDescription or vMod.description or vMod.sDesc or "Modifier";
+					--					local nValue = vMod.nValue or vMod.value or vMod.nMod or 0;
+					--
+					--					if nValue &gt;= 0 then
+					--						rRoll.sDesc = rRoll.sDesc .. "\n" .. sDesc .. " +" .. nValue;
+					--					else
+					--						rRoll.sDesc = rRoll.sDesc .. "\n" .. sDesc .. " " .. nValue;
+					--					end
+					--				end
+					--			end
+					--
+					--		elseif type(vModStack) == "string" then
+					--			if vModStack ~= "" then
+					--				rRoll.sDesc = rRoll.sDesc .. "\nModifiers: " .. vModStack;
+					--			end
+					--		end
+					--	end
+					--
+					--	-- Show total modifier
+					--	if nMod ~= 0 then
+					--		if nMod &gt;= 0 then
+					--			rRoll.sDesc = rRoll.sDesc .. "\nTotal Modifier: +" .. nMod;
+					--		else
+					--			rRoll.sDesc = rRoll.sDesc .. "\nTotal Modifier: " .. nMod;
+					--		end
+					--	end
+					--
+					--	rRoll.aDice = { "d6", "d6" };
+					--	rRoll.nMod = nMod;
+					--
+					--	ModifierStack.reset();
+					--
+					--	ActionsManager.performAction(nil, rActor, rRoll);
+					--end
+				</script>
+			</buttoncontrol>
+			<buttoncontrol name="cleartags_btn">
+				<frame name="buttondown" />
+				<bounds>437,30,85,30</bounds>
+				<tooltip textres="charsheet_cleartags_btn_Tooltip" />
+				<textres>charsheet_cleartags_btn_ButtonCaption</textres>
+				<stateframe>
+					<pressed name="buttondown" offset="-1,-1,-1,-1" nobaseframe="true" />
+				</stateframe>
+				<font>button-white</font>
+				<script>function getActorNode()
+						local node = window.getDatabaseNode();
+					
+						while node do
+							if DB.getValue(node, "name", "") ~= "" then
+								return node;
+							end
+					
+							node = node.getParent();
+						end
+					
+						return nil;
+					end
+					
+					function getActorNameFromNode(nodeActor)
+						if not nodeActor then
+							return "Unknown Actor";
+						end
+					
+						local rActor = ActorManager.resolveActor(nodeActor);
+					
+						if rActor then
+							return ActorManager.getDisplayName(rActor);
+						end
+					
+						return DB.getValue(nodeActor, "name", "Unknown Actor");
+					end
+					
+					function onButtonPress()
+						local nUnchecked = 0;
+					
+						local function isCheckboxName(sName)
+							if not sName then
+								return false;
+							end
+					
+							local s = sName:lower();
+					
+							return s:match("checkbox");
+					--			or s:match("_chk")
+					--			or s:match("scratch_item")
+					--			or s:match("scratch_item_chk");
+						end
+					
+						local function resetCheckboxNodes(node)
+							if not node then
+								return;
+							end
+					
+							for _, nodeChild in pairs(DB.getChildren(node)) do
+								local sChildName = nodeChild.getName() or "";
+					
+								if isCheckboxName(sChildName) then
+									local v = DB.getValue(nodeChild, "", 0);
+					
+									if tonumber(v) ~= 0 then
+										nUnchecked = nUnchecked + 1;
+									end
+					
+									DB.setValue(nodeChild, "", "number", 0);
+								end
+					
+								resetCheckboxNodes(nodeChild);
+							end
+						end
+					
+						local tSeen = {};
+					
+						local function resetCheckboxControls(w)
+							if not w then
+								return;
+							end
+					
+							if tSeen[w] then
+								return;
+							end
+					
+							tSeen[w] = true;
+					
+							if not w.getControls then
+								return;
+							end
+					
+							for _, c in pairs(w.getControls()) do
+								local sName = "";
+					
+								if c.getName then
+									sName = c.getName() or "";
+								end
+					
+								if isCheckboxName(sName) then
+									if c.setValue then
+										if c.getValue and tonumber(c.getValue()) ~= 0 then
+											nUnchecked = nUnchecked + 1;
+										end
+					
+										c.setValue(0);
+									end
+								end
+					
+								if c.getWindows then
+									for _, wChild in ipairs(c.getWindows()) do
+										resetCheckboxControls(wChild);
+									end
+								end
+					
+								if c.getSubwindow then
+									local wSub = c.getSubwindow();
+					
+									if wSub then
+										resetCheckboxControls(wSub);
+									end
+								end
+							end
+						end
+					
+						local nodeWin = window.getDatabaseNode();
+					
+						if nodeWin then
+							resetCheckboxNodes(nodeWin);
+						end
+					
+						resetCheckboxControls(window);
+					
+						ModifierStack.reset();
+					
+						local nodeActor = getActorNode();
+						local sActorName = getActorNameFromNode(nodeActor);
+					
+						manager_resetstatus.sendResetTagsStatusesMessage(sActorName);
+					
+						-- Debug.chat("Unchecked checkboxes:", nUnchecked);
+					end
+				</script>
+			</buttoncontrol>
+			<buttoncontrol name="tsbp_btn">
+				<frame name="buttondown" />
+				<bounds>1035,57,85,30</bounds>
+				<invisible />
+				<tooltip textres="charsheet_tsbp_btn_Tooltip" />
+				<textres>charsheet_tsbp_btn_ButtonCaption</textres>
+				<stateframe>
+					<pressed name="buttondown" offset="-1,-1,-1,-1" nobaseframe="true" />
+				</stateframe>
+				<font>button-white</font>
+				<script>function onButtonPress()
+					-- Hide
+						if window.theme_list then
+							window.theme_list.setVisible(false);
+						end
+						
+						if window.theme_list_iadd then
+							window.theme_list_iadd.setVisible(false);
+						end
+						
+						if window.theme_list_iedit then
+							window.theme_list_iedit.setVisible(false);
+						end
+					
+					-- Show
+						if window.backpack_list then
+							window.backpack_list.setVisible(true);
+						end
+					
+						if window.stattag_list then
+							window.stattag_list.setVisible(true);
+						end
+					
+						if window.backpack_list_iadd then
+							window.backpack_list_iadd.setVisible(true);
+						end
+					
+						if window.backpack_list_iedit then
+							window.backpack_list_iedit.setVisible(true);
+						end
+						
+						if window.stattag_list_iadd then
+							window.stattag_list_iadd.setVisible(true);
+						end
+					
+						if window.stattag_list_iedit then
+							window.stattag_list_iedit.setVisible(true);
+						end
+						
+						if window.backpack_lbl then
+							window.backpack_lbl.setVisible(true);
+						end
+					
+						if window.stattags_lbl then
+							window.stattags_lbl.setVisible(true);
+						end
+						
+						if window.fellowship_list then
+							window.fellowship_list.setVisible(true);
+						end
+						
+						if window.fellowship_list_iadd then
+							window.fellowship_list_iadd.setVisible(true);
+						end
+					
+						if window.fellowship_list_iedit then
+							window.fellowship_list_iedit.setVisible(true);
+						end
+					end
+				</script>
+			</buttoncontrol>
+			<buttoncontrol name="themes_btn">
+				<frame name="buttondown" />
+				<bounds>1035,31,85,30</bounds>
+				<invisible />
+				<tooltip textres="charsheet_themes_btn_Tooltip" />
+				<textres>charsheet_themes_btn_ButtonCaption</textres>
+				<stateframe>
+					<pressed name="buttondown" offset="-1,-1,-1,-1" nobaseframe="true" />
+				</stateframe>
+				<font>button-white</font>
+				<script>function onButtonPress()
+					-- Show
+						if window.theme_list then
+							window.theme_list.setVisible(true);
+						end
+						
+					--	if window.theme_list_iadd then
+					--		window.theme_list_iadd.setVisible(true);
+					--	end
+					--	
+					--	if window.theme_list_iedit then
+					--		window.theme_list_iedit.setVisible(true);
+					--	end
+					
+					-- Hide
+						if window.backpack_list then
+							window.backpack_list.setVisible(false);
+						end
+					
+						if window.stattag_list then
+							window.stattag_list.setVisible(false);
+						end
+					
+						if window.backpack_list_iadd then
+							window.backpack_list_iadd.setVisible(false);
+						end
+					
+						if window.backpack_list_iedit then
+							window.backpack_list_iedit.setVisible(false);
+						end
+						
+						if window.stattag_list_iadd then
+							window.stattag_list_iadd.setVisible(false);
+						end
+					
+						if window.stattag_list_iedit then
+							window.stattag_list_iedit.setVisible(false);
+						end
+						
+						if window.backpack_lbl then
+							window.backpack_lbl.setVisible(false);
+						end
+					
+						if window.stattags_lbl then
+							window.stattags_lbl.setVisible(false);
+						end
+						
+						if window.fellowship_list then
+							window.fellowship_list.setVisible(false);
+						end
+						
+						if window.fellowship_list_iadd then
+							window.fellowship_list_iadd.setVisible(false);
+						end
+					
+						if window.fellowship_list_iedit then
+							window.fellowship_list_iedit.setVisible(false);
+						end
+					end
+				</script>
+			</buttoncontrol>
+			<buttoncontrol name="Button1">
+				<frame name="buttondown" />
+				<bounds>1037,90,33,30</bounds>
+				<invisible />
+				<gmvisibleonly />
+				<tooltip textres="charsheet_Button1_Tooltip" />
+				<textres>charsheet_Button1_ButtonCaption</textres>
+				<stateframe>
+					<pressed name="buttondown" offset="-1,-1,-1,-1" nobaseframe="true" />
+				</stateframe>
+				<font>button-white</font>
+				<script>function onButtonPress()
+						local bCurrentlyVisible = getFirstListButtonVisibleState(window);
+					
+						if bCurrentlyVisible == nil then
+							return;
+						end
+					
+						setListButtonsVisible(window, not bCurrentlyVisible);
+					end
+					
+					function isTargetListButton(ctrl)
+						if not ctrl then
+							return false;
+						end
+					
+						local sName = ctrl.getName();
+					
+						if not sName then
+							return false;
+						end
+					
+						return string.find(sName, "list_iadd") or string.find(sName, "list_iedit");
+					end
+					
+					function getFirstListButtonVisibleState(w)
+						if not w then
+							return nil;
+						end
+					
+						for _, ctrl in pairs(w.getControls()) do
+							if isTargetListButton(ctrl) then
+								return ctrl.isVisible();
+							end
+					
+							if ctrl.getWindows then
+								for _, row in pairs(ctrl.getWindows()) do
+									local bFound = getFirstListButtonVisibleState(row);
+									if bFound ~= nil then
+										return bFound;
+									end
+								end
+							end
+					
+							if ctrl.getSubWindow then
+								local sub = ctrl.getSubWindow();
+								if sub then
+									local bFound = getFirstListButtonVisibleState(sub);
+									if bFound ~= nil then
+										return bFound;
+									end
+								end
+							end
+						end
+					
+						return nil;
+					end
+					
+					function setListButtonsVisible(w, bVisible)
+						if not w then
+							return;
+						end
+					
+						for _, ctrl in pairs(w.getControls()) do
+							if isTargetListButton(ctrl) then
+								ctrl.setVisible(bVisible);
+							end
+					
+							if ctrl.getWindows then
+								for _, row in pairs(ctrl.getWindows()) do
+									setListButtonsVisible(row, bVisible);
+								end
+							end
+					
+							if ctrl.getSubWindow then
+								local sub = ctrl.getSubWindow();
+								if sub then
+									setListButtonsVisible(sub, bVisible);
+								end
+							end
+						end
+					end
+				</script>
+			</buttoncontrol>
+			<number name="minus3">
+				<frame name="buttondown" />
+				<bounds>831,35,30,30</bounds>
+				<tooltip textres="charsheet_minus3_Tooltip" />
+				<color>#FF000000</color>
+				<readonly />
+				<min>-3</min>
+				<max>-3</max>
+				<default>-3</default>
+				<description textres="charsheet_minus3_DescriptionText" />
+				<font>reference-b-large</font>
+				<allowdoubleclick></allowdoubleclick>
+				<script>function getActorName()
+						local sActorName = "Actor";
+					
+						local nodeWin = window.getDatabaseNode();
+						if nodeWin then
+							local rActor = ActorManager.resolveActor(nodeWin);
+							if rActor and rActor.sName and rActor.sName ~= "" then
+								sActorName = rActor.sName;
+							else
+								sActorName = DB.getValue(nodeWin, "name", "Actor");
+							end
+						end
+					
+						return sActorName;
+					end
+					
+					function onClickDown(x, y)
+						local nMod = tonumber(getValue()) or 0;
+					
+						if nMod == 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Mod", nMod);
+					
+						local sActorName = getActorName();
+					
+						manager_modbutton.sendModButtonMessage(sActorName, nMod);
+					
+						return true;
+					end
+				</script>
+			</number>
+			<number name="plus3">
+				<frame name="buttondown" />
+				<bounds>761,35,30,30</bounds>
+				<tooltip textres="charsheet_plus3_Tooltip" />
+				<color>#FF000000</color>
+				<readonly />
+				<min>3</min>
+				<max>3</max>
+				<default>3</default>
+				<description textres="charsheet_plus3_DescriptionText" />
+				<font>reference-b-large</font>
+				<allowdoubleclick></allowdoubleclick>
+				<script>--function onClickDown(x, y)
+					--	local nMod = getValue();
+					--
+					--	ModifierStack.addSlot("Mod", nMod);
+					--
+					--	local sActorName = "Actor";
+					--
+					--	local nodeWin = window.getDatabaseNode();
+					--	if nodeWin then
+					--		local rActor = ActorManager.resolveActor(nodeWin);
+					--		if rActor and rActor.sName and rActor.sName ~= "" then
+					--			sActorName = rActor.sName;
+					--		else
+					--			sActorName = DB.getValue(nodeWin, "name", "Actor");
+					--		end
+					--	end
+					--
+					--	ChatManager.SystemMessage(sActorName .. " added " .. nMod);
+					--
+					--	return true;
+					--end
+					function getActorName()
+						local sActorName = "Actor";
+					
+						local nodeWin = window.getDatabaseNode();
+						if nodeWin then
+							local rActor = ActorManager.resolveActor(nodeWin);
+							if rActor and rActor.sName and rActor.sName ~= "" then
+								sActorName = rActor.sName;
+							else
+								sActorName = DB.getValue(nodeWin, "name", "Actor");
+							end
+						end
+					
+						return sActorName;
+					end
+					
+					function onClickDown(x, y)
+						local nMod = tonumber(getValue()) or 0;
+					
+						if nMod == 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Mod", nMod);
+					
+						local sActorName = getActorName();
+					
+						manager_modbutton.sendModButtonMessage(sActorName, nMod);
+					
+						return true;
+					end
+				</script>
+			</number>
+			<number name="minus6">
+				<frame name="buttondown" />
+				<bounds>861,35,30,30</bounds>
+				<tooltip textres="charsheet_minus6_Tooltip" />
+				<color>#FF000000</color>
+				<readonly />
+				<min>-6</min>
+				<max>-6</max>
+				<default>-6</default>
+				<description textres="charsheet_minus6_DescriptionText" />
+				<font>reference-b-large</font>
+				<allowdoubleclick></allowdoubleclick>
+				<script>function getActorName()
+						local sActorName = "Actor";
+					
+						local nodeWin = window.getDatabaseNode();
+						if nodeWin then
+							local rActor = ActorManager.resolveActor(nodeWin);
+							if rActor and rActor.sName and rActor.sName ~= "" then
+								sActorName = rActor.sName;
+							else
+								sActorName = DB.getValue(nodeWin, "name", "Actor");
+							end
+						end
+					
+						return sActorName;
+					end
+					
+					function onClickDown(x, y)
+						local nMod = tonumber(getValue()) or 0;
+					
+						if nMod == 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Mod", nMod);
+					
+						local sActorName = getActorName();
+					
+						manager_modbutton.sendModButtonMessage(sActorName, nMod);
+					
+						return true;
+					end
+				</script>
+			</number>
+			<number name="plus6">
+				<frame name="buttondown" />
+				<bounds>791,35,30,30</bounds>
+				<tooltip textres="charsheet_plus6_Tooltip" />
+				<color>#FF000000</color>
+				<readonly />
+				<min>6</min>
+				<max>6</max>
+				<default>6</default>
+				<description textres="charsheet_plus6_DescriptionText" />
+				<font>reference-b-large</font>
+				<allowdoubleclick></allowdoubleclick>
+				<script>function getActorName()
+						local sActorName = "Actor";
+					
+						local nodeWin = window.getDatabaseNode();
+						if nodeWin then
+							local rActor = ActorManager.resolveActor(nodeWin);
+							if rActor and rActor.sName and rActor.sName ~= "" then
+								sActorName = rActor.sName;
+							else
+								sActorName = DB.getValue(nodeWin, "name", "Actor");
+							end
+						end
+					
+						return sActorName;
+					end
+					
+					function onClickDown(x, y)
+						local nMod = tonumber(getValue()) or 0;
+					
+						if nMod == 0 then
+							return true;
+						end
+					
+						ModifierStack.addSlot("Mod", nMod);
+					
+						local sActorName = getActorName();
+					
+						manager_modbutton.sendModButtonMessage(sActorName, nMod);
+					
+						return true;
+					end
+				</script>
+			</number>
+			<stringcontrol name="favored_lbl">
+				<bounds>760,66,60,20</bounds>
+				<center />
+				<static textres="charsheet_favored_lbl_LabelCaption" />
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="imperiled_lbl">
+				<bounds>825,66,70,20</bounds>
+				<center />
+				<static textres="charsheet_imperiled_lbl_LabelCaption" />
+				<readonly />
+			</stringcontrol>
+			<subwindow name="main">
+				<bounds>10,88,-24,-16</bounds>
+				<class>charsheet_main</class>
+			</subwindow>
+			<subwindow name="abilities">
+				<bounds>10,88,-24,-16</bounds>
+				<class>charsheet_abilities</class>
+			</subwindow>
+			<subwindow name="inventory">
+				<bounds>10,88,-24,-16</bounds>
+				<class>charsheet_inventory</class>
+			</subwindow>
+			<subwindow name="notes">
+				<bounds>10,88,-24,-16</bounds>
+				<class>charsheet_notes</class>
+			</subwindow>
+			<buttongroup_tabs name="tabs">
+				<frame name="tabs" />
+				<anchored>
+					<right offset="-6" />
+					<top offset="73" />
+					<size>
+						<width>18</width>
+						<height>293</height>
+					</size>
+				</anchored>
+				<invisible />
+				<tab>
+					<subwindow>main</subwindow>
+					<textres>charsheet_tabs_Tab_Main</textres>
+				</tab>
+				<tab>
+					<subwindow>abilities</subwindow>
+					<textres>charsheet_tabs_Tab_Abilities</textres>
+				</tab>
+				<tab>
+					<subwindow>inventory</subwindow>
+					<textres>charsheet_tabs_Tab_Inventory</textres>
+				</tab>
+				<tab>
+					<subwindow>notes</subwindow>
+					<textres>charsheet_tabs_Tab_Notes</textres>
+				</tab>
+			</buttongroup_tabs>
+			<buttongroup_tabs_h name="TabControl1">
+				<frame name="tabs_h" />
+				<anchored>
+					<left offset="390" />
+					<top offset="69" />
+					<size>
+						<width>218</width>
+						<height>18</height>
+					</size>
+				</anchored>
+				<tab>
+					<subwindow>main</subwindow>
+					<textres>charsheet_TabControl1_Tab_Themes</textres>
+				</tab>
+				<tab>
+					<subwindow>abilities</subwindow>
+					<textres>charsheet_TabControl1_Tab_Details</textres>
+				</tab>
+				<tab>
+					<subwindow>notes</subwindow>
+					<textres>charsheet_TabControl1_Tab_Notes</textres>
+				</tab>
+			</buttongroup_tabs_h>
+		</sheetdata>
+	</windowclass>
+</root>

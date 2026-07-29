@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="stattagdetailsg">
+		<placement>
+			<size height="30" width="275" />
+		</placement>
+		<sheetdata>
+			<stringfield name="statustagg_string">
+				<bounds>59,3,150,25</bounds>
+				<controlline />
+				<lineoffset>-1</lineoffset>
+				<font>reference-b</font>
+			</stringfield>
+			<number name="stpower_num">
+				<frame name="fielddark" />
+				<bounds>278,0,40,30</bounds>
+				<invisible />
+			</number>
+			<buttonfield name="Checkbox1">
+				<bounds>316,5,20,20</bounds>
+				<invisible />
+				<state icon="the_add" />
+				<state icon="button_checkon" />
+				<script>--function onValueChanged()
+					--	if getValue() == 1 then
+					--		local nPower = 0;
+					--
+					--		if window.stpower_num then
+					--			nPower = window.stpower_num.getValue();
+					--		end
+					--
+					--		if nPower ~= 0 then
+					--			ModifierStack.addSlot("", nPower);
+					--		end
+					--	end
+					--end
+					function onButtonPress()
+						local nPower = 0;
+						local sName = "";
+					
+						if window.stpower_num then
+							nPower = window.stpower_num.getValue();
+						end
+					
+						if window.statustagg_string then
+							sName = window.statustagg_string.getValue();
+						end
+					
+						if sName == "" then
+							sName = "Status/Tag";
+						end
+					
+						ChatManager.SystemMessage("Status/Tag modifier added: " .. sName .. " (" .. nPower .. ")");
+					
+						if nPower ~= 0 then
+							ModifierStack.addSlot(sName, nPower);
+						end
+					end
+				</script>
+			</buttonfield>
+			<buttonfield name="Checkbox2">
+				<bounds>340,5,20,20</bounds>
+				<invisible />
+				<state icon="the_minus" />
+				<state icon="button_checkon" />
+				<script>--function onValueChanged()
+					--	if getValue() == 1 then
+					--		local nPower = 0;
+					--
+					--		if window.stpower_num then
+					--			nPower = window.stpower_num.getValue() * -1;
+					--		end
+					--
+					--		if nPower ~= 0 then
+					--			ModifierStack.addSlot("", nPower);
+					--		end
+					--	end
+					--end
+					function onButtonPress()
+						local nPower = 0;
+						local sName = "";
+					
+						if window.stpower_num then
+							nPower = window.stpower_num.getValue() * -1;
+						end
+					
+						if window.statustagg_string then
+							sName = window.statustagg_string.getValue();
+						end
+					
+						if sName == "" then
+							sName = "Status/Tag";
+						end
+					
+						ChatManager.SystemMessage("Status/Tag modifier subtracted: " .. sName .. " (" .. nPower .. ")");
+					
+						if nPower ~= 0 then
+							ModifierStack.addSlot(sName, nPower);
+						end
+					end
+				</script>
+			</buttonfield>
+			<buttoncontrol name="Button1">
+				<bounds>14,5,20,20</bounds>
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<script>function getActiveActorName()
+						local sIdentity = User.getCurrentIdentity();
+					
+						if sIdentity and sIdentity ~= "" then
+							local nodeChar = DB.findNode("charsheet." .. sIdentity);
+					
+							if nodeChar then
+								local rActor = ActorManager.resolveActor(nodeChar);
+					
+								if rActor then
+									return ActorManager.getDisplayName(rActor);
+								end
+					
+								return DB.getValue(nodeChar, "name", "Unknown Actor");
+							end
+					
+							local sLabel = User.getIdentityLabel(sIdentity);
+							if sLabel and sLabel ~= "" then
+								return sLabel;
+							end
+						end
+					
+						if Session.IsHost then
+							return "Host";
+						end
+					
+						return "Unknown Actor";
+					end
+					
+					function onButtonPress()
+						local nPower = 0;
+						local sName = "";
+						local sActorName = getActiveActorName();
+					
+						if window.stpower_dd then
+							nPower = tonumber(window.stpower_dd.getValue()) or 0;
+						end
+					
+						if window.statustagg_string then
+							sName = window.statustagg_string.getValue();
+						end
+					
+						if sName == "" then
+							sName = "Status/Tag";
+						end
+					
+						if nPower ~= 0 then
+							ModifierStack.addSlot(sName, nPower);
+						end
+					
+						manager_statusmod.sendStatusTagModMessage(sName, nPower, sActorName);
+					end
+				</script>
+			</buttoncontrol>
+			<buttoncontrol name="Button2">
+				<bounds>36,5,20,20</bounds>
+				<icon normal="the_minus" />
+				<font>button-white</font>
+				<script>function getActiveActorName()
+						local sIdentity = User.getCurrentIdentity();
+					
+						if sIdentity and sIdentity ~= "" then
+							local nodeChar = DB.findNode("charsheet." .. sIdentity);
+					
+							if nodeChar then
+								local rActor = ActorManager.resolveActor(nodeChar);
+					
+								if rActor then
+									return ActorManager.getDisplayName(rActor);
+								end
+					
+								return DB.getValue(nodeChar, "name", "Unknown Actor");
+							end
+					
+							local sLabel = User.getIdentityLabel(sIdentity);
+							if sLabel and sLabel ~= "" then
+								return sLabel;
+							end
+						end
+					
+						if Session.IsHost then
+							return "Host";
+						end
+					
+						return "Unknown Actor";
+					end
+					
+					function onButtonPress()
+						local nPower = 0;
+						local sName = "";
+						local sActorName = getActiveActorName();
+					
+						if window.stpower_dd then
+							nPower = (tonumber(window.stpower_dd.getValue()) or 0) * -1;
+						end
+					
+						if window.statustagg_string then
+							sName = window.statustagg_string.getValue();
+						end
+					
+						if sName == "" then
+							sName = "Status/Tag";
+						end
+					
+						if nPower ~= 0 then
+							ModifierStack.addSlot(sName, nPower);
+						end
+					
+						manager_statusmod.sendStatusTagModMessage(sName, nPower, sActorName);
+					end
+				</script>
+			</buttoncontrol>
+			<combobox name="stpower_dd">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>213,5,26,20</bounds>
+				<parameters>
+					<labelsres>stattagdetailsg_stpower_dd_Label_1|stattagdetailsg_stpower_dd_Label_2|stattagdetailsg_stpower_dd_Label_3|stattagdetailsg_stpower_dd_Label_4|stattagdetailsg_stpower_dd_Label_5|stattagdetailsg_stpower_dd_Label_6</labelsres>
+					<values>1|2|3|4|5|6</values>
+				</parameters>
+			</combobox>
+			<buttoncontrol name="delete_btn">
+				<bounds>248,6,15,15</bounds>
+				<gmvisibleonly />
+				<icon normal="button_delete" />
+				<script>function onButtonPress()
+						local node = window.getDatabaseNode();
+					
+						if not node then
+							window.close();
+							return;
+						end
+					
+						if Session.IsHost then
+							node.delete();
+							return;
+						end
+					
+						local msgOOB = {};
+						msgOOB.type = "desktoplist_deleteitem";
+						msgOOB.sNode = node.getPath();
+					
+						Comm.deliverOOBMessage(msgOOB, "");
+					end
+				</script>
+			</buttoncontrol>
+		</sheetdata>
+	</windowclass>
+</root>

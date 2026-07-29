@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="char_invitem">
+		<script file="campaign/scripts/char_invitem.lua" />
+		<placement>
+			<size height="24" width="300" />
+		</placement>
+		<sheetdata>
+			<hidden_record_isidentified name="isidentified">
+				<class>item</class>
+				<ignorehost></ignorehost>
+			</hidden_record_isidentified>
+			<number name="count">
+				<frame name="fielddark" offset="3,3,3,3" />
+				<bounds>0,0,30,24</bounds>
+				<tabtarget>
+					<next>name</next>
+				</tabtarget>
+				<min>0</min>
+				<hideonvalue>0</hideonvalue>
+				<font>sheetnumber</font>
+			</number>
+			<button_idelete name="idelete">
+				<anchored>
+					<right anchor="right" offset="-2" />
+					<top offset="2" />
+					<size>
+						<width>20</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<icon normal="button_delete" />
+			</button_idelete>
+			<linkcontrol_record name="shortcut">
+				<anchored>
+					<right anchor="left" parent="idelete" offset="-3" />
+					<top offset="2" />
+					<size>
+						<width>20</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<class>item</class>
+			</linkcontrol_record>
+			<button_char_inv_carried name="carried">
+				<anchored>
+					<right anchor="left" parent="shortcut" offset="-4" />
+					<top offset="2" />
+					<size>
+						<width>20</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<icon normal="button_char_inv_carried" />
+			</button_char_inv_carried>
+			<number name="weight">
+				<frame name="fielddark" offset="0,3,0,3" />
+				<anchored>
+					<right anchor="left" parent="carried" offset="-3" />
+					<top offset="0" />
+					<size>
+						<width>40</width>
+						<height>24</height>
+					</size>
+				</anchored>
+				<tabtarget>
+					<prev>location</prev>
+				</tabtarget>
+				<delaykeyupdate />
+				<min>0</min>
+				<hideonvalue>0</hideonvalue>
+				<font>sheetnumber</font>
+			</number>
+			<string_textlistitem name="location">
+				<anchored>
+					<right anchor="left" parent="weight" offset="0" />
+					<top offset="3" />
+					<size>
+						<width>80</width>
+						<height>20</height>
+					</size>
+				</anchored>
+				<tabtarget>
+					<next>weight</next>
+					<prev>nonid_name</prev>
+				</tabtarget>
+				<controlline />
+				<lineoffset>-2</lineoffset>
+				<script>local aAutoFill = {};
+					
+					function onChar()
+						if getCursorPosition() == #getValue() + 1 then
+							local sCompletion = StringManager.autoComplete(aAutoFill, getValue(), true);
+							if sCompletion then
+								setValue(getValue() .. sCompletion);
+								setSelectionPosition(getCursorPosition() + #sCompletion);
+							end
+					
+							return;
+						end
+					end
+					
+					function onGainFocus()
+						window.windowlist.setSortLock(true);
+					
+						aAutoFill = {};
+						
+						for _,w in ipairs(window.windowlist.getWindows()) do
+							local bID = LibraryData.getIDState("item", w.getDatabaseNode());
+							if bID then
+								local s = w.name.getValue();
+								if s ~= "" then
+									table.insert(aAutoFill, s);
+								end
+							end
+						end
+						
+						super.onGainFocus();
+					end
+					
+					function onLoseFocus()
+					Debug.chat("XX");
+						window.windowlist.setSortLock(false);
+					
+						super.onLoseFocus();
+						window.windowlist.updateContainers();
+					end
+					
+				</script>
+			</string_textlistitem>
+			<stringfield name="name">
+				<anchored>
+					<left offset="31" />
+					<right anchor="left" parent="location" offset="-4" />
+					<top offset="3" />
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<tabtarget>
+					<next>nonid_name</next>
+					<prev>count</prev>
+				</tabtarget>
+				<nodrop />
+				<delaykeyupdate />
+				<controlline />
+				<lineoffset>-2</lineoffset>
+				<script file="common/scripts/list_textitem.lua" />
+				<script>function onLoseFocus()
+						super.onLoseFocus();
+						window.windowlist.updateContainers();
+					end
+					
+				</script>
+			</stringfield>
+			<stringfield name="nonid_name">
+				<anchored>
+					<left offset="31" />
+					<right anchor="left" parent="location" offset="-4" />
+					<top offset="3" />
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<tabtarget>
+					<next>location</next>
+					<prev>name</prev>
+				</tabtarget>
+				<invisible />
+				<empty textres="char_invitem_nonid_name_EmptyText" />
+				<nodrop />
+				<delaykeyupdate />
+				<controlline />
+				<lineoffset>-2</lineoffset>
+				<script file="common/scripts/list_textitem.lua" />
+				<script>function onLoseFocus()
+						super.onLoseFocus();
+						window.windowlist.updateContainers();
+					end
+					
+				</script>
+			</stringfield>
+		</sheetdata>
+	</windowclass>
+</root>

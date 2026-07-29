@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<panel name="threats" modes="host">
+		<class>threats</class>
+		<bounds>
+			<anchored>
+				<left anchor="right" offset="-700" />
+				<top anchor="top" offset="0" />
+				<size>
+					<width>300</width>
+					<height>300</height>
+				</size>
+			</anchored>
+		</bounds>
+		<dynamic />
+	</panel>
+	<windowclass name="threats">
+		<frame>charsheet</frame>
+		<sharable />
+		<noclose />
+		<script>function onInit()
+				if Session.IsHost then
+					makeStatTagsPublic();
+				end
+			
+				if stattag_iadd then
+					stattag_iadd.setVisible(Session.IsHost);
+				end
+			end
+			
+			function makeStatTagsPublic()
+				local nodeList = DB.createNode("stattagg_list");
+				if not nodeList then
+					return;
+				end
+			
+				nodeList.setPublic(true);
+			
+				for _, nodeEntry in pairs(DB.getChildren(nodeList)) do
+					nodeEntry.setPublic(true);
+				end
+			end
+		</script>
+		<sheetdata>
+			<windowtitlebar name="title">
+				<resource>Window_threats_Title</resource>
+			</windowtitlebar>
+			<windowlist name="threat_list">
+				<bounds>22,50,255,200</bounds>
+				<class>threatdetails</class>
+				<datasource>.threatdetails_list</datasource>
+				<allowcreate />
+				<allowdelete />
+			</windowlist>
+			<button_iadd name="threat_list_iadd">
+				<bounds>254,27,20,20</bounds>
+				<gmvisibleonly />
+				<tooltip textres="threats_threat_list_iadd_Tooltip" />
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>threat_list</target>
+			</button_iadd>
+			<buttonfield name="shrink">
+				<bounds>12,12,25,25</bounds>
+				<tooltip textres="threats_shrink_Tooltip" />
+				<icon normal="red_arrow_icon" />
+				<font>button-white</font>
+				<script>local bThreatsMinimized = false;
+					
+					local aHideControls = {
+						"threat_list",
+						"threat_list_iadd",
+						
+					};
+					
+					function setThreatsControlsVisible(bVisible)
+						for _, sControl in ipairs(aHideControls) do
+							if window[sControl] and window[sControl].setVisible then
+								window[sControl].setVisible(bVisible);
+							end
+						end
+					end
+					
+					function onButtonPress()
+						bThreatsMinimized = not bThreatsMinimized;
+					
+						setThreatsControlsVisible(not bThreatsMinimized);
+					
+						if bThreatsMinimized then
+							window.setSize(200, 50);
+						else
+							window.setSize(300, 300);
+						end
+					end
+				</script>
+			</buttonfield>
+		</sheetdata>
+	</windowclass>
+</root>

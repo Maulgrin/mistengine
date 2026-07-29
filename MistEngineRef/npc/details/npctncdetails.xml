@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="npctncdetails">
+		<placement>
+			<size height="75" width="430" />
+		</placement>
+		<sheetdata>
+			<formattedtextfield name="specfeat_txt">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>11,5,408,70</bounds>
+				<empty textres="npctncdetails_specfeat_txt_EmptyText" />
+			</formattedtextfield>
+			<buttoncontrol name="delete_btn">
+				<bounds>411,4,15,15</bounds>
+				<gmvisibleonly />
+				<icon normal="button_delete" />
+				<script>function onButtonPress()
+						local node = window.getDatabaseNode();
+					
+						if not node then
+							window.close();
+							return;
+						end
+					
+						if Session.IsHost then
+							node.delete();
+							return;
+						end
+					
+					
+					end
+				</script>
+			</buttoncontrol>
+		</sheetdata>
+	</windowclass>
+</root>

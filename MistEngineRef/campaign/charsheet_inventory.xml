@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="charsheet_inventory">
+		<placement>
+			<size height="483" width="524" />
+		</placement>
+		<sheetdata>
+			<genericcontrol name="inventoryframe">
+				<frame name="groupbox" />
+				<bounds>15,0,-29,-205</bounds>
+			</genericcontrol>
+			<stringcontrol name="count_label">
+				<bounds>39,12,10,20</bounds>
+				<center />
+				<static textres="charsheet_inventory_count_label_LabelCaption" />
+				<font>sheetlabel</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="location_label">
+				<bounds>-221,12,80,20</bounds>
+				<center />
+				<static textres="charsheet_inventory_location_label_LabelCaption" />
+				<font>sheetlabel</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="name_label">
+				<anchored>
+					<left offset="70" />
+					<right anchor="left" parent="location_label" offset="-3" />
+					<top offset="12" />
+					<size>
+						<height>20</height>
+					</size>
+				</anchored>
+				<center />
+				<static textres="charsheet_inventory_name_label_LabelCaption" />
+				<font>sheetlabel</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="weight_label">
+				<bounds>-137,12,30,20</bounds>
+				<tooltip textres="charsheet_inventory_weight_label_Tooltip" />
+				<center />
+				<static textres="charsheet_inventory_weight_label_LabelCaption" />
+				<font>sheetlabel</font>
+				<readonly />
+			</stringcontrol>
+			<genericcontrol name="carried_header">
+				<bounds>-99,12,20,20</bounds>
+				<tooltip textres="charsheet_inventory_carried_header_Tooltip" />
+				<icon>char_inv_carried_header</icon>
+			</genericcontrol>
+			<windowlist name="inventorylist">
+				<bounds>30,40,-49,-220</bounds>
+				<class>char_invitem</class>
+				<datasource>.inventorylist</datasource>
+				<child />
+				<child>
+					<backcolor>#1E1A4030</backcolor>
+				</child>
+				<script file="campaign/scripts/char_invlist.lua" />
+			</windowlist>
+			<scrollbarcontrol name="scrollInventory">
+				<frame name="scrollbar_base" offset="0,12,0,12" />
+				<bounds>-59,46,20,-227</bounds>
+				<target>inventorylist</target>
+				<normal name="scrollbutton_normal">
+					<minimum height="scrollbutton_normal" />
+				</normal>
+			</scrollbarcontrol>
+			<button_iedit name="inventorylist_iedit">
+				<bounds>-56,10,20,20</bounds>
+				<icon normal="button_edit" />
+				<font>button-white</font>
+				<target>inventorylist</target>
+				<script>
+					function onValueChanged()
+						super.onValueChanged();
+					
+						-- This template gets rid of the relative positioning of the headers, 
+						-- so their position must be adjusted manually when the delete button is shown and hidden.	
+						if getValue() == 1 then
+							window.location_label.setStaticBounds(-241, 12, 80, 20);
+							window.weight_label.setStaticBounds(-157, 12, 30, 20);
+							window.carried_header.setStaticBounds(-119, 12, 20, 20);
+						else
+							window.location_label.setStaticBounds(-221, 12, 80, 20);
+							window.weight_label.setStaticBounds(-137, 12, 30, 20);
+							window.carried_header.setStaticBounds(-99, 12, 20, 20);
+						end
+					end
+					
+				</script>
+			</button_iedit>
+			<button_iadd name="inventorylist_iadd">
+				<bounds>-76,10,20,20</bounds>
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>inventorylist</target>
+			</button_iadd>
+			<genericcontrol name="idelete_header">
+				<bounds>496,10,20,20</bounds>
+				<disabled />
+			</genericcontrol>
+			<genericcontrol name="encumbranceframe">
+				<frame name="groupbox" />
+				<bounds>15,-205,240,200</bounds>
+			</genericcontrol>
+			<stringcontrol name="encumbrance_label">
+				<bounds>43,-177,118,20</bounds>
+				<static textres="charsheet_inventory_encumbrance_label_LabelCaption" />
+				<readonly />
+			</stringcontrol>
+			<number name="encumbranceload" source="encumbrance.load">
+				<frame name="fieldlight" />
+				<bounds>173,-182,60,30</bounds>
+				<readonly />
+			</number>
+			<genericcontrol name="coinframe">
+				<frame name="groupbox" />
+				<bounds>255,-205,-29,200</bounds>
+			</genericcontrol>
+			<stringcontrol name="coin_label">
+				<bounds>271,-198,-46,20</bounds>
+				<center />
+				<static textres="charsheet_inventory_coin_label_LabelCaption" />
+				<font>sheetlabel</font>
+				<readonly />
+			</stringcontrol>
+			<basicstring name="coinother">
+				<frame name="fielddark" offset="7,5,7,5" />
+				<bounds>398,-173,-47,154</bounds>
+				<multilinespacing>20</multilinespacing>
+				<font>sheettext</font>
+			</basicstring>
+			<number_dropadd name="coinamount1" source="coins.slot1.amount">
+				<frame name="fielddark" />
+				<bounds>265,-180,60,30</bounds>
+			</number_dropadd>
+			<stringfield name="coinname1" source="coins.slot1.name">
+				<bounds>327,-173,60,20</bounds>
+				<controlline />
+				<lineoffset>-2</lineoffset>
+			</stringfield>
+			<number_dropadd name="coinamount2" source="coins.slot2.amount">
+				<frame name="fielddark" />
+				<bounds>265,-153,60,30</bounds>
+			</number_dropadd>
+			<stringfield name="coinname2" source="coins.slot2.name">
+				<bounds>327,-146,60,20</bounds>
+				<controlline />
+				<lineoffset>-2</lineoffset>
+			</stringfield>
+			<number_dropadd name="coinamount3" source="coins.slot3.amount">
+				<frame name="fielddark" />
+				<bounds>265,-126,60,30</bounds>
+			</number_dropadd>
+			<stringfield name="coinname3" source="coins.slot3.name">
+				<bounds>327,-119,60,20</bounds>
+				<controlline />
+				<lineoffset>-2</lineoffset>
+			</stringfield>
+			<number_dropadd name="coinamount4" source="coins.slot4.amount">
+				<frame name="fielddark" />
+				<bounds>265,-99,60,30</bounds>
+			</number_dropadd>
+			<stringfield name="coinname4" source="coins.slot4.name">
+				<bounds>327,-92,60,20</bounds>
+				<controlline />
+				<lineoffset>-2</lineoffset>
+			</stringfield>
+			<number_dropadd name="coinamount5" source="coins.slot5.amount">
+				<frame name="fielddark" />
+				<bounds>265,-72,60,30</bounds>
+			</number_dropadd>
+			<stringfield name="coinname5" source="coins.slot5.name">
+				<bounds>327,-65,60,20</bounds>
+				<controlline />
+				<lineoffset>-2</lineoffset>
+			</stringfield>
+			<number_dropadd name="coinamount6" source="coins.slot6.amount">
+				<frame name="fielddark" />
+				<bounds>265,-45,60,30</bounds>
+			</number_dropadd>
+			<stringfield name="coinname6" source="coins.slot6.name">
+				<bounds>327,-38,60,20</bounds>
+				<controlline />
+				<lineoffset>-2</lineoffset>
+			</stringfield>
+		</sheetdata>
+	</windowclass>
+</root>

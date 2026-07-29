@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="npc_main">
+		<placement>
+			<size height="615" width="440" />
+		</placement>
+		<sizelimits resize="both">
+			<maximum width="440" height="615" />
+			<minimum width="440" height="460" />
+		</sizelimits>
+		<script>function onInit()
+				update();
+			end
+			
+			function VisDataCleared()
+				update();
+			end
+			
+			function InvisDataAdded()
+				update();
+			end
+			
+			function update()
+				local nodeRecord = getDatabaseNode();
+				local bReadOnly = WindowManager.getReadOnlyState(nodeRecord);
+				local bID = LibraryData.getIDState("npc", nodeRecord);
+			
+				local bSection1 = false;
+				if Session.IsHost then
+					if WindowManager.callSafeControlUpdate(self, "nonid_name", bReadOnly) then bSection1 = true; end;
+				else
+					WindowManager.callSafeControlUpdate(self, "nonid_name", bReadOnly, true);
+				end
+			--	divider.setVisible(bSection1);
+				
+				space.setReadOnly(bReadOnly);
+				reach.setReadOnly(bReadOnly);
+			--	senses.setReadOnly(bReadOnly);
+				
+				local bSection2 = false;
+				if WindowManager.callSafeControlUpdate(self, "skills", bReadOnly) then bSection2 = true; end;
+				if WindowManager.callSafeControlUpdate(self, "items", bReadOnly) then bSection2 = true; end;
+				if WindowManager.callSafeControlUpdate(self, "languages", bReadOnly) then bSection2 = true; end;
+			--	divider2.setVisible(bSection2);
+			
+			end
+			
+		</script>
+		<sheetdata>
+			<stringcontrol name="space_label">
+				<bounds>267,38,50,20</bounds>
+				<color>#FFFFFFFF</color>
+				<static textres="npc_main_space_label_LabelCaption" />
+				<font>reference-b</font>
+				<readonly />
+			</stringcontrol>
+			<number name="space">
+				<frame name="fieldlight" hidereadonly="true" />
+				<bounds>307,33,40,30</bounds>
+				<default>1</default>
+			</number>
+			<stringcontrol name="reach_label">
+				<bounds>347,38,49,20</bounds>
+				<color>#FFFFFFFF</color>
+				<static textres="npc_main_reach_label_LabelCaption" />
+				<font>reference-b</font>
+				<readonly />
+			</stringcontrol>
+			<number name="reach">
+				<frame name="fieldlight" hidereadonly="true" />
+				<bounds>387,33,40,30</bounds>
+				<default>1</default>
+			</number>
+			<stringcontrol name="role_lbl">
+				<bounds>10,8,50,20</bounds>
+				<color>#FFFFFFFF</color>
+				<static textres="npc_main_role_lbl_LabelCaption" />
+				<font>reference-b</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="cr_lbl">
+				<bounds>10,38,30,20</bounds>
+				<color>#FFFFFFFF</color>
+				<static textres="npc_main_cr_lbl_LabelCaption" />
+				<font>reference-b</font>
+				<readonly />
+			</stringcontrol>
+			<combobox name="roles_cbx">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>57,8,86,20</bounds>
+				<parameters>
+					<labelsres>npc_main_roles_cbx_Label_Aggressor|npc_main_roles_cbx_Label_Charge|npc_main_roles_cbx_Label_Countdown|npc_main_roles_cbx_Label_Influence|npc_main_roles_cbx_Label_Mystery|npc_main_roles_cbx_Label_Obstacle|npc_main_roles_cbx_Label_Pursuer|npc_main_roles_cbx_Label_Quarry|npc_main_roles_cbx_Label_Sapper|npc_main_roles_cbx_Label_Support|npc_main_roles_cbx_Label_Watcher</labelsres>
+					<values>Aggressor|Charge|Countdown|Influence|Mystery|Obstacle|Pursuer|Quarry|Sapper|Support|Watcher</values>
+				</parameters>
+				<unsorted />
+			</combobox>
+			<combobox name="cr_cbx">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>39,38,36,20</bounds>
+				<parameters>
+					<labelsres>npc_main_cr_cbx_Label_1|npc_main_cr_cbx_Label_2|npc_main_cr_cbx_Label_3|npc_main_cr_cbx_Label_4|npc_main_cr_cbx_Label_5</labelsres>
+					<values>1|2|3|4|5</values>
+				</parameters>
+			</combobox>
+			<combobox name="roles2_cbx">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>149,8,86,20</bounds>
+				<parameters>
+					<labelsres>npc_main_roles2_cbx_Label_Aggressor|npc_main_roles2_cbx_Label_Charge|npc_main_roles2_cbx_Label_Countdown|npc_main_roles2_cbx_Label_Influence|npc_main_roles2_cbx_Label_Mystery|npc_main_roles2_cbx_Label_Obstacle|npc_main_roles2_cbx_Label_Pursuer|npc_main_roles2_cbx_Label_Quarry|npc_main_roles2_cbx_Label_Sapper|npc_main_roles2_cbx_Label_Support|npc_main_roles2_cbx_Label_Watcher</labelsres>
+					<values>Aggressor|Charge|Countdown|Influence|Mystery|Obstacle|Pursuer|Quarry|Sapper|Support|Watcher</values>
+				</parameters>
+				<unsorted />
+			</combobox>
+			<combobox name="roles3_cbx">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>241,8,86,20</bounds>
+				<parameters>
+					<labelsres>npc_main_roles3_cbx_Label_Aggressor|npc_main_roles3_cbx_Label_Charge|npc_main_roles3_cbx_Label_Countdown|npc_main_roles3_cbx_Label_Influence|npc_main_roles3_cbx_Label_Mystery|npc_main_roles3_cbx_Label_Obstacle|npc_main_roles3_cbx_Label_Pursuer|npc_main_roles3_cbx_Label_Quarry|npc_main_roles3_cbx_Label_Sapper|npc_main_roles3_cbx_Label_Support|npc_main_roles3_cbx_Label_Watcher</labelsres>
+					<values>Aggressor|Charge|Countdown|Influence|Mystery|Obstacle|Pursuer|Quarry|Sapper|Support|Watcher</values>
+				</parameters>
+				<unsorted />
+			</combobox>
+			<combobox name="roles4_cbx">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>334,8,86,20</bounds>
+				<parameters>
+					<labelsres>npc_main_roles4_cbx_Label_Aggressor|npc_main_roles4_cbx_Label_Charge|npc_main_roles4_cbx_Label_Countdown|npc_main_roles4_cbx_Label_Influence|npc_main_roles4_cbx_Label_Mystery|npc_main_roles4_cbx_Label_Obstacle|npc_main_roles4_cbx_Label_Pursuer|npc_main_roles4_cbx_Label_Quarry|npc_main_roles4_cbx_Label_Sapper|npc_main_roles4_cbx_Label_Support|npc_main_roles4_cbx_Label_Watcher</labelsres>
+					<values>Aggressor|Charge|Countdown|Influence|Mystery|Obstacle|Pursuer|Quarry|Sapper|Support|Watcher</values>
+				</parameters>
+				<unsorted />
+			</combobox>
+			<stringcontrol name="limits_lbl">
+				<bounds>10,69,100,20</bounds>
+				<color>#FFFFFFFF</color>
+				<static textres="npc_main_limits_lbl_LabelCaption" />
+				<font>reference-chapter</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="tagstat_lbl">
+				<bounds>222,69,176,20</bounds>
+				<color>#FFFFFFFF</color>
+				<static textres="npc_main_tagstat_lbl_LabelCaption" />
+				<font>reference-chapter</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="specfeat_lbl">
+				<bounds>10,514,176,20</bounds>
+				<color>#FFFFFFFF</color>
+				<static textres="npc_main_specfeat_lbl_LabelCaption" />
+				<font>reference-chapter</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="Label1">
+				<bounds>10,334,255,20</bounds>
+				<color>#FFFFFFFF</color>
+				<static textres="npc_main_Label1_LabelCaption" />
+				<font>reference-chapter</font>
+				<readonly />
+			</stringcontrol>
+			<formattedtextfield name="specfeat_txt">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>12,536,408,70</bounds>
+				<empty textres="npc_main_specfeat_txt_EmptyText" />
+			</formattedtextfield>
+			<windowlist name="npctncdetails_list">
+				<bounds>2,357,435,152</bounds>
+				<class>npctncdetails</class>
+				<datasource>.npctncdetails</datasource>
+				<allowcreate />
+				<allowdelete />
+			</windowlist>
+			<button_iadd name="npctncdetails_list_iadd">
+				<bounds>414,334,20,20</bounds>
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>npctncdetails_list</target>
+			</button_iadd>
+			<windowlist name="npclimits_list">
+				<bounds>10,92,200,230</bounds>
+				<class>npclimitsdetails</class>
+				<datasource>.npclimitsdetails</datasource>
+				<allowcreate />
+				<allowdelete />
+			</windowlist>
+			<windowlist name="npctns_list">
+				<bounds>222,92,200,230</bounds>
+				<class>npctnsdetails</class>
+				<datasource>.npctnsdetails</datasource>
+				<allowcreate />
+				<allowdelete />
+			</windowlist>
+			<button_iadd name="npclimits_list_iadd">
+				<bounds>184,69,20,20</bounds>
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>npclimits_list</target>
+			</button_iadd>
+			<button_iadd name="npctns_list_iadd">
+				<bounds>394,69,20,20</bounds>
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>npctns_list</target>
+			</button_iadd>
+		</sheetdata>
+	</windowclass>
+</root>

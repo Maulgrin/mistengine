@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<panel name="fellowthemes" modes="all">
+		<class>fellowthemes</class>
+		<bounds>
+			<anchored>
+				<left anchor="right" offset="-500" />
+				<top anchor="top" offset="305" />
+				<size>
+					<width>300</width>
+					<height>600</height>
+				</size>
+			</anchored>
+		</bounds>
+		<dynamic />
+	</panel>
+	<windowclass name="fellowthemes">
+		<frame>charsheet</frame>
+		<sharable />
+		<noclose />
+		<script>function onInit()
+				if Session.IsHost then
+					makeFellowThemesPublic();
+				end
+			end
+			
+			function makeFellowThemesPublic()
+				local nodeList = DB.createNode("fellowtheme_list");
+				if not nodeList then
+					return;
+				end
+			
+				nodeList.setPublic(true);
+			
+				for _, nodeEntry in pairs(DB.getChildren(nodeList)) do
+					nodeEntry.setPublic(true);
+				end
+			end
+		</script>
+		<sheetdata>
+			<windowtitlebar name="title">
+				<resource>Window_fellowthemes_Title</resource>
+			</windowtitlebar>
+			<windowlist name="fellowtheme_list">
+				<bounds>22,50,255,523</bounds>
+				<class>fellowthemedetails</class>
+				<datasource>.fellowtheme_list</datasource>
+				<allowcreate />
+				<allowdelete />
+			</windowlist>
+			<button_iadd name="fellowtheme_list_iadd">
+				<bounds>254,27,20,20</bounds>
+				<gmvisibleonly />
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>fellowtheme_list</target>
+				<script>function onButtonPress()
+						if not Session.IsHost then
+							ChatManager.SystemMessage("GM only: only the Host can add entries here.");
+							return true;
+						end
+					
+						super.onButtonPress();
+					
+						if window.filter then
+							window.filter.setValue();
+						end
+					
+						return true;
+					end
+				</script>
+			</button_iadd>
+			<buttonfield name="shrink">
+				<bounds>12,12,25,25</bounds>
+				<tooltip textres="fellowthemes_shrink_Tooltip" />
+				<icon normal="red_arrow_icon" />
+				<font>button-white</font>
+				<script>--local bThreatsMinimized = false;
+					--
+					--local aHideControls = {
+					--	"fellowtheme_list",
+					--	"fellowtheme_list_iadd",
+					--	
+					--};
+					--
+					--function setThreatsControlsVisible(bVisible)
+					--	for _, sControl in ipairs(aHideControls) do
+					--		if window[sControl] and window[sControl].setVisible then
+					--			window[sControl].setVisible(bVisible);
+					--		end
+					--	end
+					--end
+					--
+					--function onButtonPress()
+					--	bThreatsMinimized = not bThreatsMinimized;
+					--
+					--	setThreatsControlsVisible(not bThreatsMinimized);
+					--
+					--	if bThreatsMinimized then
+					--		window.setSize(200, 50);
+					--	else
+					--		window.setSize(300, 300);
+					--	end
+					--end
+					local bThreatsMinimized = false;
+					
+					local aHideControls = {
+						"fellowtheme_list",
+						"fellowtheme_list_iadd",
+						"fellowtheme_list_iedit",
+					};
+					
+					local aGMOnlyControls = {
+						"fellowtheme_list_iadd",
+						"fellowtheme_list_iedit",
+					};
+					
+					function isGMOnlyControl(sControl)
+						for _, sGMControl in ipairs(aGMOnlyControls) do
+							if sControl == sGMControl then
+								return true;
+							end
+						end
+					
+						return false;
+					end
+					
+					function setThreatsControlsVisible(bVisible)
+						for _, sControl in ipairs(aHideControls) do
+							if window[sControl] and window[sControl].setVisible then
+								if isGMOnlyControl(sControl) then
+									window[sControl].setVisible(bVisible and Session.IsHost);
+					
+									if window[sControl].setEnabled then
+										window[sControl].setEnabled(bVisible and Session.IsHost);
+									end
+								else
+									window[sControl].setVisible(bVisible);
+								end
+							end
+						end
+					end
+					
+					function onButtonPress()
+						bThreatsMinimized = not bThreatsMinimized;
+					
+						setThreatsControlsVisible(not bThreatsMinimized);
+					
+						if bThreatsMinimized then
+							window.setSize(200, 50);
+						else
+							window.setSize(300, 300);
+						end
+					end
+				</script>
+			</buttonfield>
+		</sheetdata>
+	</windowclass>
+</root>

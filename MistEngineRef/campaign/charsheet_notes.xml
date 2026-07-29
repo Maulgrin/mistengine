@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="charsheet_notes">
+		<placement>
+			<size height="483" width="524" />
+		</placement>
+		<sheetdata>
+			<genericcontrol name="detailframe">
+				<frame name="border" />
+				<bounds>15,0,-29,45</bounds>
+			</genericcontrol>
+			<stringfield name="race">
+				<bounds>32,8,150,20</bounds>
+				<controlline />
+				<lineoffset>-1</lineoffset>
+				<font>sheettext</font>
+			</stringfield>
+			<stringcontrol name="lblRace">
+				<bounds>33,25,39,14</bounds>
+				<static textres="charsheet_notes_lblRace_LabelCaption" />
+				<font>sheetlabelinline</font>
+				<readonly />
+			</stringcontrol>
+			<stringfield name="gender">
+				<bounds>185,8,70,20</bounds>
+				<controlline />
+				<lineoffset>-1</lineoffset>
+				<font>sheettext</font>
+			</stringfield>
+			<stringcontrol name="lblGender">
+				<bounds>186,25,55,14</bounds>
+				<static textres="charsheet_notes_lblGender_LabelCaption" />
+				<font>sheetlabelinline</font>
+				<readonly />
+			</stringcontrol>
+			<stringfield name="age">
+				<bounds>258,8,70,20</bounds>
+				<controlline />
+				<lineoffset>-1</lineoffset>
+				<font>sheettext</font>
+			</stringfield>
+			<stringcontrol name="lblAge">
+				<bounds>259,25,39,14</bounds>
+				<static textres="charsheet_notes_lblAge_LabelCaption" />
+				<font>sheetlabelinline</font>
+				<readonly />
+			</stringcontrol>
+			<stringfield name="height">
+				<bounds>331,8,70,20</bounds>
+				<controlline />
+				<lineoffset>-1</lineoffset>
+				<font>sheettext</font>
+			</stringfield>
+			<stringcontrol name="lblHeight">
+				<bounds>332,25,57,14</bounds>
+				<static textres="charsheet_notes_lblHeight_LabelCaption" />
+				<font>sheetlabelinline</font>
+				<readonly />
+			</stringcontrol>
+			<stringfield name="weight">
+				<bounds>404,8,70,20</bounds>
+				<controlline />
+				<lineoffset>-1</lineoffset>
+				<font>sheettext</font>
+			</stringfield>
+			<stringcontrol name="lblWeight">
+				<bounds>405,25,54,14</bounds>
+				<static textres="charsheet_notes_lblWeight_LabelCaption" />
+				<font>sheetlabelinline</font>
+				<readonly />
+			</stringcontrol>
+			<genericcontrol name="appearanceframe">
+				<frame name="border" />
+				<bounds>15,45,320,190</bounds>
+			</genericcontrol>
+			<stringcontrol name="lblAppearance">
+				<bounds>33,55,288,20</bounds>
+				<center />
+				<static textres="charsheet_notes_lblAppearance_LabelCaption" />
+				<font>sheetlabel</font>
+				<readonly />
+			</stringcontrol>
+			<stringfield name="appearance">
+				<bounds>30,75,285,145</bounds>
+				<nodrag />
+				<controlline />
+				<lineoffset>-2</lineoffset>
+				<multilinespacing>20</multilinespacing>
+			</stringfield>
+			<scrollbarcontrol name="scrollAppearance">
+				<frame name="scrollbar_base" offset="0,12,0,12" />
+				<bounds>309,76,20,136</bounds>
+				<target>appearance</target>
+				<normal name="scrollbutton_normal">
+					<minimum height="scrollbutton_normal" />
+				</normal>
+			</scrollbarcontrol>
+			<genericcontrol name="languageframe">
+				<frame name="border" />
+				<bounds>335,45,-29,190</bounds>
+			</genericcontrol>
+			<stringcontrol name="lblLanguages">
+				<bounds>362,56,-65,20</bounds>
+				<center />
+				<static textres="charsheet_notes_lblLanguages_LabelCaption" />
+				<font>sheetlabel</font>
+				<readonly />
+			</stringcontrol>
+			<list_text name="languages">
+				<bounds>350,80,-49,140</bounds>
+				<class>char_language</class>
+				<datasource>.languagelist</datasource>
+				<allowcreate />
+				<allowdelete />
+				<sortby>
+					<control>name</control>
+				</sortby>
+				<newfocus>name</newfocus>
+				<script>function onDrop(x, y, draginfo)
+						local sDragType = draginfo.getType();
+						if sDragType == "string" or sDragType == "language" then
+							local w = addEntry(true);
+							w.name.setValue(draginfo.getStringData());
+							return true;
+						end
+					end
+				</script>
+			</list_text>
+			<scrollbarcontrol name="scrollLanguages">
+				<frame name="scrollbar_base" offset="0,12,0,12" />
+				<bounds>-55,85,20,127</bounds>
+				<target>languages</target>
+				<normal name="scrollbutton_normal">
+					<minimum height="scrollbutton_normal" />
+				</normal>
+			</scrollbarcontrol>
+			<button_iedit name="languages_iedit">
+				<bounds>-57,55,20,20</bounds>
+				<icon normal="button_edit" />
+				<font>button-white</font>
+				<target>languages</target>
+			</button_iedit>
+			<button_iadd name="languages_iadd">
+				<bounds>-77,55,20,20</bounds>
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>languages</target>
+			</button_iadd>
+			<genericcontrol name="notesframe">
+				<frame name="border" />
+				<bounds>15,235,-29,-5</bounds>
+			</genericcontrol>
+			<stringcontrol name="lblNotes">
+				<bounds>31,245,-44,20</bounds>
+				<center />
+				<static textres="charsheet_notes_lblNotes_LabelCaption" />
+				<font>sheetlabel</font>
+				<readonly />
+			</stringcontrol>
+			<stringfield name="notes">
+				<bounds>30,265,-49,-20</bounds>
+				<nodrag />
+				<controlline />
+				<lineoffset>-2</lineoffset>
+				<multilinespacing>20</multilinespacing>
+			</stringfield>
+			<scrollbarcontrol name="scrollNotes">
+				<frame name="scrollbar_base" offset="0,12,0,12" />
+				<bounds>-55,264,20,-29</bounds>
+				<target>notes</target>
+				<normal name="scrollbutton_normal">
+					<minimum height="scrollbutton_normal" />
+				</normal>
+			</scrollbarcontrol>
+		</sheetdata>
+	</windowclass>
+</root>

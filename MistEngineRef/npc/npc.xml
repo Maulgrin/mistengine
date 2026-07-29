@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="npc">
+		<frame>recordsheet</frame>
+		<gmexport>npc</gmexport>
+		<placement>
+			<size height="610" width="500" />
+		</placement>
+		<sizelimits resize="both">
+			<maximum width="500" height="840" />
+			<minimum width="500" height="610" />
+			<dynamic />
+		</sizelimits>
+		<tooltip field="name" />
+		<minimize>minimized_npc</minimize>
+		<script>function onLockChanged()
+				self.onStateChanged();
+			end
+			function onIDChanged()
+				WindowManager.updateTooltip(self);
+				self.onStateChanged();
+			end
+			function onNameUpdated()
+				WindowManager.updateTooltip(self);
+			end
+			
+			function onStateChanged()
+				if header and header.subwindow then
+					if header.subwindow.update then
+						header.subwindow.update();
+					end
+				end
+				local tTabs = WindowTabManager.getTabsData(self);
+				for _,v in ipairs(tTabs) do
+					local c = self[v.sName];
+					if c and c.subwindow then
+						if c.subwindow.update then
+							c.subwindow.update();
+						end
+					end
+				end
+			end
+			
+		</script>
+		<sheetdata>
+			<windowmenubar_recordsheet name="header_window">
+				<bounds>15,14,-14,25</bounds>
+			</windowmenubar_recordsheet>
+			<subwindow name="header">
+				<frame offset="10,10,10,10" />
+				<bounds>20,49,-24,67</bounds>
+				<class>npc_header</class>
+				<activate />
+				<fastinit />
+			</subwindow>
+			<genericcontrol name="contentframe">
+				<bounds>9,122,-15,-11</bounds>
+			</genericcontrol>
+			<subwindow name="pictures">
+				<bounds>89,182,-111,-183</bounds>
+				<class>record_content_pictures</class>
+				<fastinit />
+			</subwindow>
+			<formattedtextfield name="notes">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>26,137,-43,-33</bounds>
+				<invisible />
+				<empty textres="npc_notes_EmptyText" />
+			</formattedtextfield>
+			<subwindow name="main">
+				<bounds>19,132,-36,-28</bounds>
+				<class>npc_main</class>
+				<fastinit />
+			</subwindow>
+			<scrollbarcontrol name="scrollbar_main">
+				<frame name="scrollbar_base" offset="0,12,0,12" />
+				<bounds>-40,142,20,-243</bounds>
+				<target>main</target>
+				<normal name="scrollbutton_normal">
+					<minimum height="scrollbutton_normal" />
+				</normal>
+			</scrollbarcontrol>
+			<scrollbarcontrol name="scrollbar_notes">
+				<frame name="scrollbar_base" offset="0,12,0,12" />
+				<bounds>-40,142,20,-243</bounds>
+				<target>notes</target>
+				<normal name="scrollbutton_normal">
+					<minimum height="scrollbutton_normal" />
+				</normal>
+			</scrollbarcontrol>
+			<buttongroup_tabs name="tabs">
+				<frame name="tabs" />
+				<anchored>
+					<right offset="1" />
+					<top offset="55" />
+					<size>
+						<width>18</width>
+						<height>226</height>
+					</size>
+				</anchored>
+				<tab>
+					<subwindow>main</subwindow>
+					<textres>npc_tabs_Tab_Main</textres>
+				</tab>
+				<tab>
+					<subwindow>notes</subwindow>
+					<textres>npc_tabs_Tab_Notes</textres>
+				</tab>
+				<tab>
+					<subwindow>pictures</subwindow>
+					<textres>npc_tabs_Tab_Pictures</textres>
+				</tab>
+			</buttongroup_tabs>
+			<genericcontrol name="resize">
+				<bounds>-19,-19,18,18</bounds>
+				<disabled />
+				<icon>window_resize</icon>
+			</genericcontrol>
+		</sheetdata>
+	</windowclass>
+</root>

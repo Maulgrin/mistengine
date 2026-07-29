@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="charsheet_main">
+		<placement>
+			<size height="505" width="990" />
+		</placement>
+		<sheetdata>
+			<list_text name="theme_list">
+				<bounds>2,2,982,497</bounds>
+				<class>themedetails</class>
+				<datasource>.theme_list</datasource>
+				<allowcreate />
+				<allowdelete />
+				<empty>
+					<textres>charsheet_main_theme_list_EmptyListText</textres>
+				</empty>
+				<columns>
+					<width>242</width>
+					<fillwidth />
+				</columns>
+				<newfocus>themes_cbx</newfocus>
+			</list_text>
+			<button_iadd name="theme_list_iadd">
+				<bounds>968,2,20,20</bounds>
+				<tooltip textres="charsheet_main_theme_list_iadd_Tooltip" />
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>theme_list</target>
+			</button_iadd>
+			<button_iedit name="theme_list_iedit">
+				<bounds>968,22,20,20</bounds>
+				<tooltip textres="charsheet_main_theme_list_iedit_Tooltip" />
+				<icon normal="button_edit" />
+				<font>button-white</font>
+				<target>theme_list</target>
+			</button_iedit>
+		</sheetdata>
+	</windowclass>
+</root>

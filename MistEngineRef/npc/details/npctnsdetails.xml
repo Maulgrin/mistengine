@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="npctnsdetails">
+		<placement>
+			<size height="40" width="200" />
+		</placement>
+		<sheetdata>
+			<stringfield name="statustag_string">
+				<bounds>12,2,150,20</bounds>
+				<color>#FFFFFFFF</color>
+				<font>reference-b</font>
+			</stringfield>
+			<buttoncontrol name="delete_btn">
+				<bounds>178,2,15,15</bounds>
+				<gmvisibleonly />
+				<icon normal="button_delete" />
+				<script>function onButtonPress()
+						local node = window.getDatabaseNode();
+					
+						if not node then
+							window.close();
+							return;
+						end
+					
+						if Session.IsHost then
+							node.delete();
+							return;
+						end
+					
+					end
+				</script>
+			</buttoncontrol>
+			<buttonfield name="advlvl_cbx">
+				<bounds>14,19,20,20</bounds>
+				<tooltip textres="npctnsdetails_advlvl_cbx_Tooltip" />
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="greatlvl_cbx">
+				<bounds>31,19,20,20</bounds>
+				<tooltip textres="npctnsdetails_greatlvl_cbx_Tooltip" />
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+		</sheetdata>
+	</windowclass>
+</root>

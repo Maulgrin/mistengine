@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<windowclass name="npclimitsdetails">
+		<placement>
+			<size height="40" width="200" />
+		</placement>
+		<sheetdata>
+			<stringfield name="statustag_string">
+				<bounds>8,2,130,20</bounds>
+				<color>#FFFFFFFF</color>
+				<font>reference-b</font>
+			</stringfield>
+			<combobox name="stpower_dd">
+				<frame name="fieldlight" offset="7,5,7,5" />
+				<bounds>142,6,26,20</bounds>
+				<parameters>
+					<labelsres>npclimitsdetails_stpower_dd_Label_1|npclimitsdetails_stpower_dd_Label_2|npclimitsdetails_stpower_dd_Label_3|npclimitsdetails_stpower_dd_Label_4|npclimitsdetails_stpower_dd_Label_5|npclimitsdetails_stpower_dd_Label_6|npclimitsdetails_stpower_dd_Label__</labelsres>
+					<values>1|2|3|4|5|6|~</values>
+				</parameters>
+			</combobox>
+			<buttonfield name="statlvl1">
+				<bounds>11,19,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="statlvl2">
+				<bounds>31,19,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="statlvl3">
+				<bounds>51,19,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="statlvl4">
+				<bounds>71,19,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="statlvl5">
+				<bounds>91,19,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttonfield name="statlvl6">
+				<bounds>111,19,20,20</bounds>
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+			</buttonfield>
+			<buttoncontrol name="delete_btn">
+				<bounds>178,2,15,15</bounds>
+				<gmvisibleonly />
+				<icon normal="button_delete" />
+				<script>function onButtonPress()
+						local node = window.getDatabaseNode();
+					
+						if not node then
+							window.close();
+							return;
+						end
+					
+						if Session.IsHost then
+							node.delete();
+							return;
+						end
+					
+					end
+				</script>
+			</buttoncontrol>
+		</sheetdata>
+	</windowclass>
+</root>
