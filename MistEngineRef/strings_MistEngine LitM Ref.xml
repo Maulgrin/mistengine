@@ -123,6 +123,7 @@
 	<string name="fellowthemedetails_scratch_item5_chk_Tooltip">Scratch Tag</string>
 	<string name="fellowthemedetails_scratch_item6_chk_Tooltip">Scratch Tag</string>
 	<string name="fellowthemedetails_scratch_item7_chk_Tooltip">Scratch</string>
+	<string name="stattagdetails_is_tag_chk_Tooltip">Check if TAG</string>
 	<string name="stattagdetails_stpower_dd_Label_1">1</string>
 	<string name="stattagdetails_stpower_dd_Label_2">2</string>
 	<string name="stattagdetails_stpower_dd_Label_3">3</string>

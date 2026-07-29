@@ -4,7 +4,22 @@
 		<placement>
 			<size height="40" width="275" />
 		</placement>
-		<script>function updateStatPowerDropdown()
+		<script>function clampStatPowerDropdown()
+				if not self.is_tag_chk or self.is_tag_chk.getValue() ~= 1 or not self.stpower_dd then
+					return;
+				end
+
+				local nPower = tonumber(self.stpower_dd.getValue()) or 0;
+				if nPower &gt; 1 then
+					self.stpower_dd.setValue("1");
+				end
+			end
+
+			function onInit()
+				self.clampStatPowerDropdown();
+			end
+
+			function updateStatPowerDropdown()
 				local nHighest = 0;
 			
 				for i = 1, 6 do
@@ -22,6 +37,8 @@
 						self.stpower_dd.setValue("");
 					end
 				end
+
+				self.clampStatPowerDropdown();
 			end
 		</script>
 		<sheetdata>
@@ -387,7 +404,25 @@
 					<labelsres>stattagdetails_stpower_dd_Label_1|stattagdetails_stpower_dd_Label_2|stattagdetails_stpower_dd_Label_3|stattagdetails_stpower_dd_Label_4|stattagdetails_stpower_dd_Label_5|stattagdetails_stpower_dd_Label_6</labelsres>
 					<values>1|2|3|4|5|6</values>
 				</parameters>
+				<script>function onValueChanged()
+						if window.clampStatPowerDropdown then
+							window.clampStatPowerDropdown();
+						end
+					end
+				</script>
 			</combobox>
+			<buttonfield name="is_tag_chk">
+				<bounds>249,5,20,20</bounds>
+				<tooltip textres="stattagdetails_is_tag_chk_Tooltip" />
+				<state icon="button_checkoff" />
+				<state icon="button_checkon" />
+				<script>function onValueChanged()
+						if window.clampStatPowerDropdown then
+							window.clampStatPowerDropdown();
+						end
+					end
+				</script>
+			</buttonfield>
 			<buttonfield name="statlvl1">
 				<bounds>80,23,20,20</bounds>
 				<state icon="button_checkoff" />
