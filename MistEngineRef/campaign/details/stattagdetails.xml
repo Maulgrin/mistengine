@@ -4,22 +4,69 @@
 		<placement>
 			<size height="40" width="275" />
 		</placement>
-		<script>function clampStatPowerDropdown()
-				if not self.is_tag_chk or self.is_tag_chk.getValue() ~= 1 or not self.stpower_dd then
-					return;
+		<script>function isTag()
+				return self.is_tag_chk and self.is_tag_chk.getValue() == 1;
+			end
+
+			function setReadOnlyIfSupported(c, bReadOnly)
+				if c and c.setReadOnly then
+					c.setReadOnly(bReadOnly);
+				end
+			end
+
+			function setStatPowerControlsReadOnly(bReadOnly)
+				for i = 1, 6 do
+					self.setReadOnlyIfSupported(self["statlvl" .. i], bReadOnly);
 				end
 
-				local nPower = tonumber(self.stpower_dd.getValue()) or 0;
-				if nPower &gt; 1 then
+				self.setReadOnlyIfSupported(self.stpower_dd, bReadOnly);
+			end
+
+			function forceTagPower()
+				for i = 1, 6 do
+					local cStatLevel = self["statlvl" .. i];
+					if cStatLevel then
+						local nValue = 0;
+						if i == 1 then
+							nValue = 1;
+						end
+
+						if cStatLevel.getValue() ~= nValue then
+							cStatLevel.setValue(nValue);
+						end
+					end
+				end
+
+				if self.stpower_dd and self.stpower_dd.getValue() ~= "1" then
 					self.stpower_dd.setValue("1");
 				end
 			end
 
+			function updateTagLockState()
+				local bTag = self.isTag();
+				if bTag then
+					self.forceTagPower();
+				end
+
+				self.setStatPowerControlsReadOnly(bTag);
+			end
+
+			function clampStatPowerDropdown()
+				if self.isTag() then
+					self.forceTagPower();
+				end
+			end
+
 			function onInit()
-				self.clampStatPowerDropdown();
+				self.updateTagLockState();
 			end
 
 			function updateStatPowerDropdown()
+				if self.isTag() then
+					self.forceTagPower();
+					return;
+				end
+
 				local nHighest = 0;
 			
 				for i = 1, 6 do
@@ -38,7 +85,7 @@
 					end
 				end
 
-				self.clampStatPowerDropdown();
+				self.updateTagLockState();
 			end
 		</script>
 		<sheetdata>
@@ -417,8 +464,8 @@
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
 				<script>function onValueChanged()
-						if window.clampStatPowerDropdown then
-							window.clampStatPowerDropdown();
+						if window.updateTagLockState then
+							window.updateTagLockState();
 						end
 					end
 				</script>
