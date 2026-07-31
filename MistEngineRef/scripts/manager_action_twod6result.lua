@@ -74,6 +74,8 @@ function onRollResult(rSource, rTarget, rRoll)
 		msg.icon = sIcon;
 	end
 
+	msg.text = msg.text or "";
+
 --	msg.text = msg.text .. "\nDice: " .. nDie1 .. " + " .. nDie2;
 	msg.text = msg.text .. "Result: " .. sOutcome;
 	

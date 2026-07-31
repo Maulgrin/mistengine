@@ -8,6 +8,60 @@
 			<maximum width="240" height="490" />
 			<minimum width="240" height="490" />
 		</sizelimits>
+		<script>local aFellowThemeButtonIndexes = { 1, 2, 3, 4, 5, 6, 7, 9, 10 };
+
+			function getButtonIndex(cButton)
+				if not cButton or not cButton.getName then
+					return 0;
+				end
+
+				return tonumber(cButton.getName():match("(%d+)$")) or 0;
+			end
+
+			function setEnabledIfSupported(c, bEnabled)
+				if c and c.setEnabled then
+					c.setEnabled(bEnabled);
+				end
+			end
+
+			function updateFellowThemeButtonState(nIndex)
+				local cButton = self["Button" .. nIndex];
+				local cCheckbox = self["Checkbox" .. nIndex];
+
+				if cButton and cCheckbox then
+					self.setEnabledIfSupported(cButton, cCheckbox.getValue() ~= 1);
+				end
+			end
+
+			function updateFellowThemeButtonStates()
+				for _, nIndex in ipairs(aFellowThemeButtonIndexes) do
+					self.updateFellowThemeButtonState(nIndex);
+				end
+			end
+
+			function pressFellowThemeButton(cButton, nManualValue)
+				local nIndex = self.getButtonIndex(cButton);
+				local cCheckbox = self["Checkbox" .. nIndex];
+
+				if cCheckbox and cCheckbox.getValue() == 1 then
+					self.updateFellowThemeButtonState(nIndex);
+					return true;
+				end
+
+				manager_fellowshipmod.addButtonStringMod(self, cButton, nManualValue);
+
+				if cCheckbox then
+					cCheckbox.setValue(1);
+					self.updateFellowThemeButtonState(nIndex);
+				end
+
+				return true;
+			end
+
+			function onInit()
+				self.updateFellowThemeButtonStates();
+			end
+		</script>
 		<sheetdata>
 			<button_idelete name="idelete">
 				<bounds>1,3,20,20</bounds>
@@ -154,54 +208,108 @@
 				<tooltip textres="fellowthemedetails_Checkbox1_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
+				<script>function onValueChanged()
+						if window.updateFellowThemeButtonState then
+							window.updateFellowThemeButtonState(1);
+						end
+					end
+				</script>
 			</buttonfield>
 			<buttonfield name="Checkbox2">
 				<bounds>216,60,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox2_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
+				<script>function onValueChanged()
+						if window.updateFellowThemeButtonState then
+							window.updateFellowThemeButtonState(2);
+						end
+					end
+				</script>
 			</buttonfield>
 			<buttonfield name="Checkbox3">
 				<bounds>216,90,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox3_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
+				<script>function onValueChanged()
+						if window.updateFellowThemeButtonState then
+							window.updateFellowThemeButtonState(3);
+						end
+					end
+				</script>
 			</buttonfield>
 			<buttonfield name="Checkbox4">
 				<bounds>216,120,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox4_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
+				<script>function onValueChanged()
+						if window.updateFellowThemeButtonState then
+							window.updateFellowThemeButtonState(4);
+						end
+					end
+				</script>
 			</buttonfield>
 			<buttonfield name="Checkbox5">
 				<bounds>216,150,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox5_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
+				<script>function onValueChanged()
+						if window.updateFellowThemeButtonState then
+							window.updateFellowThemeButtonState(5);
+						end
+					end
+				</script>
 			</buttonfield>
 			<buttonfield name="Checkbox6">
 				<bounds>216,180,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox6_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
+				<script>function onValueChanged()
+						if window.updateFellowThemeButtonState then
+							window.updateFellowThemeButtonState(6);
+						end
+					end
+				</script>
 			</buttonfield>
 			<buttonfield name="Checkbox7">
 				<bounds>216,210,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox7_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
+				<script>function onValueChanged()
+						if window.updateFellowThemeButtonState then
+							window.updateFellowThemeButtonState(7);
+						end
+					end
+				</script>
 			</buttonfield>
 			<buttonfield name="Checkbox9">
 				<bounds>216,265,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox9_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
+				<script>function onValueChanged()
+						if window.updateFellowThemeButtonState then
+							window.updateFellowThemeButtonState(9);
+						end
+					end
+				</script>
 			</buttonfield>
 			<buttonfield name="Checkbox10">
 				<bounds>216,295,20,20</bounds>
 				<tooltip textres="fellowthemedetails_Checkbox10_Tooltip" />
 				<state icon="button_checkoff" />
 				<state icon="button_checkon" />
+				<script>function onValueChanged()
+						if window.updateFellowThemeButtonState then
+							window.updateFellowThemeButtonState(10);
+						end
+					end
+				</script>
 			</buttonfield>
 			<buttonfield name="scratch_item1_chk">
 				<bounds>296,28,20,20</bounds>
@@ -314,7 +422,7 @@
 				<icon normal="the_add" />
 				<font>button-white</font>
 				<script>function onButtonPress()
-						manager_fellowshipmod.addButtonStringMod(window, self, 1);
+						return window.pressFellowThemeButton(self, 1);
 					end
 				</script>
 			</buttoncontrol>
@@ -324,7 +432,7 @@
 				<icon normal="the_add" />
 				<font>button-white</font>
 				<script>function onButtonPress()
-						manager_fellowshipmod.addButtonStringMod(window, self, 1);
+						return window.pressFellowThemeButton(self, 1);
 					end
 				</script>
 			</buttoncontrol>
@@ -334,7 +442,7 @@
 				<icon normal="the_add" />
 				<font>button-white</font>
 				<script>function onButtonPress()
-						manager_fellowshipmod.addButtonStringMod(window, self, 1);
+						return window.pressFellowThemeButton(self, 1);
 					end
 				</script>
 			</buttoncontrol>
@@ -344,7 +452,7 @@
 				<icon normal="the_add" />
 				<font>button-white</font>
 				<script>function onButtonPress()
-						manager_fellowshipmod.addButtonStringMod(window, self, 1);
+						return window.pressFellowThemeButton(self, 1);
 					end
 				</script>
 			</buttoncontrol>
@@ -354,7 +462,7 @@
 				<icon normal="the_add" />
 				<font>button-white</font>
 				<script>function onButtonPress()
-						manager_fellowshipmod.addButtonStringMod(window, self, 1);
+						return window.pressFellowThemeButton(self, 1);
 					end
 				</script>
 			</buttoncontrol>
@@ -364,7 +472,7 @@
 				<icon normal="the_add" />
 				<font>button-white</font>
 				<script>function onButtonPress()
-						manager_fellowshipmod.addButtonStringMod(window, self, 1);
+						return window.pressFellowThemeButton(self, 1);
 					end
 				</script>
 			</buttoncontrol>
@@ -374,7 +482,7 @@
 				<icon normal="the_add" />
 				<font>button-white</font>
 				<script>function onButtonPress()
-						manager_fellowshipmod.addButtonStringMod(window, self, 1);
+						return window.pressFellowThemeButton(self, 1);
 					end
 				</script>
 			</buttoncontrol>
@@ -384,7 +492,7 @@
 				<icon normal="the_minus" />
 				<font>button-white</font>
 				<script>function onButtonPress()
-						manager_fellowshipmod.addButtonStringMod(window, self, -1);
+						return window.pressFellowThemeButton(self, -1);
 					end
 				</script>
 			</buttoncontrol>
@@ -394,7 +502,7 @@
 				<icon normal="the_minus" />
 				<font>button-white</font>
 				<script>function onButtonPress()
-						manager_fellowshipmod.addButtonStringMod(window, self, -1);
+						return window.pressFellowThemeButton(self, -1);
 					end
 				</script>
 			</buttoncontrol>
