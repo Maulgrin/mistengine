@@ -27,4 +27,40 @@ pak is simply a zip file that was renamed .pak to work with Fantasy Grounds.
 
 When I say create pak than 
 1. zip everthing under the MistEngineRef folder. 
-2. rename it MistEngineRef.pak and move to the build folder. Overwrite what is already in the build folder if necessary
+2. rename it MistEngineRef.pak and move to the build folder. Overwrite what is already in the build folder if neccessary
+
+GUI Impact Report
+Report Files expected to change:
+Report Existing systems affected:
+Report Database nodes affected:
+Report Primary risks:
+
+GUI REDESIGN MODE
+
+When I explicitly say "GUI redesign mode", larger structural changes are
+permitted.
+
+Before editing:
+
+1. Read notes/gui-redesign-plan.md.
+2. Identify all affected window classes, templates, scripts, graphics,
+   fonts, and database nodes.
+3. Produce a GUI impact report.
+4. Distinguish data-model changes from presentation-only changes.
+5. Preserve existing database node names unless a migration plan is approved.
+6. Prefer reusable templates over repeated window-specific XML.
+7. Implement one functional area at a time.
+8. Do not redesign unrelated windows.
+9. Validate XML after each functional area.
+10. Update notes/development-log.md after each completed stage.
+
+For every major GUI change, test or inspect:
+
+- Empty-state layout
+- Populated-state layout
+- Minimum window size
+- Expanded window size
+- Drag-and-drop behavior
+- Host and player visibility
+- GM-only controls
+- Existing campaign compatibility

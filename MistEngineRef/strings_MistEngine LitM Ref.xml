@@ -172,6 +172,7 @@
 	<string name="themedetails_Checkbox7_Tooltip">Use Tag</string>
 	<string name="themedetails_Checkbox8_Tooltip">Use Tag</string>
 	<string name="themedetails_Checkbox9_Tooltip">Use Tag</string>
+	<string name="themedetails_Checkbox10_Tooltip">Use Tag</string>
 	<string name="themedetails_scratch_item1_Tooltip">Scratch Tag</string>
 	<string name="themedetails_scratch_item2_Tooltip">Scratch Tag</string>
 	<string name="themedetails_scratch_item3_Tooltip">Scratch Tag</string>
@@ -179,6 +180,7 @@
 	<string name="themedetails_scratch_item5_Tooltip">Scratch Tag</string>
 	<string name="themedetails_scratch_item6_Tooltip">Scratch Tag</string>
 	<string name="themedetails_scratch_item7_Tooltip">Scratch</string>
+	<string name="themedetails_scratch_item10_Tooltip">Scratch</string>
 	<string name="themedetails_mightlvl_cbx_Label_Origin">Origin</string>
 	<string name="themedetails_mightlvl_cbx_Label_Adventure">Adventure</string>
 	<string name="themedetails_mightlvl_cbx_Label_Greatness">Greatness</string>

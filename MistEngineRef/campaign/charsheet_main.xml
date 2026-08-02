@@ -2,11 +2,11 @@
 <root>
 	<windowclass name="charsheet_main">
 		<placement>
-			<size height="505" width="990" />
+			<size height="535" width="990" />
 		</placement>
 		<sheetdata>
 			<list_text name="theme_list">
-				<bounds>2,2,982,497</bounds>
+				<bounds>2,2,982,527</bounds>
 				<class>themedetails</class>
 				<datasource>.theme_list</datasource>
 				<allowcreate />
