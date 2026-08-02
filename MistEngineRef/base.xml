@@ -7,9 +7,9 @@
 		<text>This is only a character sheet.</text>
 	</announcement>
 	<description>
-		<text>MistEngine LitM Ref</text>
+		<text>MistEngine LitM Ref 1.3</text>
 		<displayname>MistEngine LitM Ref</displayname>
-		<displayversion>1.2</displayversion>
+		<displayversion>1.3</displayversion>
 		<author>Mauled</author>
 	</description>
 	<importruleset source="CoreRPG" />
