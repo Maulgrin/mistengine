@@ -7,7 +7,7 @@ This ruleset is a Fantasy Grounds character sheet and modifier helper for Legend
 1. Open your character sheet.
 2. Click the tags, statuses, relationships, backpack items, or manual modifier buttons that apply to the action.
 3. Each clicked control adds its value to the Fantasy Grounds modifier stack and usually posts a chat message.
-4. Click `2d6`.
+4. Click `2d6/Die Button right of name`.
 5. The roll consumes the modifier stack, rolls two six-sided dice, and reports:
    - `Failure` on a total below 7.
    - `Mixed` on a total from 7 to 9.
@@ -22,13 +22,13 @@ Use `Reset` after a move or scene when you want to clear checked tag/status cont
 
 The top of the character sheet has the main roll controls.
 
-- `2d6`: rolls two six-sided dice using the current modifier stack, then clears the stack.
+- `2d6/Die Button right of name`: rolls two six-sided dice using the current modifier stack, then clears the stack.
 - `Reset`: clears checked tag/status controls on the sheet and clears the modifier stack.
 - `+3` and `-3`: quick Adventure-level modifiers.
 - `+6` and `-6`: quick Greatness-level modifiers.
 - `Favored` and `Imperiled`: labels near those quick modifier buttons.
 
-Click modifier buttons before rolling. Do not click `2d6` until all relevant modifiers have been added.
+Click modifier buttons before rolling. Do not click `2d6/Die Button right of name` until all relevant modifiers have been added.
 
 ## Themes Tab
 
@@ -93,9 +93,7 @@ Use the relationships list for companions, contacts, or relationship tags.
 
 Rows are organized as companion/tag fields. The use-tag checkbox adds `+1` as a `Relationship` modifier and marks that relationship/tag as used. The lower fields and checkboxes are for relationship notes and promise/quintessence tracking.
 
-## Notes and Inventory Tabs
-
-The `Inventory` tab is the normal CoreRPG inventory-style list.
+## Notes
 
 The `Notes` tab contains character details such as race, sex, age, height, weight, appearance, languages, and general notes.
 
