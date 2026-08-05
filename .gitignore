@@ -9,7 +9,7 @@ __pycache__/
 # Distribution / packaging
 CoreRPG-reference/
 .Python
-build/
+# build/
 develop-eggs/
 dist/
 downloads/
@@ -232,7 +232,7 @@ venv/
 # Ignore coverage reports
 .coverage
 # Ignore build directories
-build/
+# build/
 dist/
 # Ignore package distribution files
 *.egg
