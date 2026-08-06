@@ -4,7 +4,15 @@
 		<placement>
 			<size height="40" width="275" />
 		</placement>
-		<script>function updateStatPowerDropdown()
+		<sizelimits>
+			<minimum width="200" height="40" />
+			<dynamic />
+		</sizelimits>
+		<script>function onClickDown(button, x, y)
+				WindowManager.getTopWindow(self).bringToFront();
+			end
+
+			function updateStatPowerDropdown()
 				local nHighest = 0;
 			
 				for i = 1, 6 do
@@ -26,7 +34,12 @@
 		</script>
 		<sheetdata>
 			<stringfield name="statustag_string">
-				<bounds>49,3,150,25</bounds>
+				<anchored>
+					<left offset="49" />
+					<top offset="3" />
+					<right offset="-76" />
+					<size height="25" />
+				</anchored>
 				<controlline />
 				<lineoffset>-1</lineoffset>
 				<font>reference-b</font>
@@ -377,7 +390,11 @@
 			</buttonfield>
 			<combobox name="stpower_dd">
 				<frame name="fieldlight" offset="7,5,7,5" />
-				<bounds>206,5,26,20</bounds>
+				<anchored>
+					<top offset="5" />
+					<right offset="-43" />
+					<size width="26" height="20" />
+				</anchored>
 				<parameters>
 					<labelsres>threatdetails_stpower_dd_Label_1|threatdetails_stpower_dd_Label_2|threatdetails_stpower_dd_Label_3|threatdetails_stpower_dd_Label_4|threatdetails_stpower_dd_Label_5|threatdetails_stpower_dd_Label_6</labelsres>
 					<values>1|2|3|4|5|6</values>
@@ -462,7 +479,11 @@
 				</script>
 			</buttonfield>
 			<buttoncontrol name="delete_btn">
-				<bounds>238,6,15,15</bounds>
+				<anchored>
+					<top offset="6" />
+					<right offset="-22" />
+					<size width="15" height="15" />
+				</anchored>
 				<gmvisibleonly />
 				<icon normal="button_delete" />
 				<script>function onButtonPress()

@@ -18,7 +18,11 @@
 		<frame>charsheet</frame>
 		<sharable />
 		<noclose />
-		<script>function onInit()
+		<script>function onClickDown(button, x, y)
+				self.bringToFront();
+			end
+
+			function onInit()
 				if Session.IsHost then
 					makeFellowThemesPublic();
 				end

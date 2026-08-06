@@ -24,3 +24,5 @@
 ## 2026-08-06
 
 - Added dynamic resize limits and CoreRPG resize handles to the `statuses` and `threats` desktop windows while preserving their existing shrink button size.
+- Anchored the `statuses` and `threats` desktop lists to resize with their parent windows, anchored the `statuses` quick plus/minus buttons to the bottom edge, and made `stattagdetailsg`/`threatdetails` row text fields and right-side controls respond to row width changes.
+- Added click-to-front behavior to the `statuses`, `fellowthemes`, and `threats` desktop windows and their list row windowclasses using CoreRPG's verified `bringToFront()` window API.

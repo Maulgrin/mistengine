@@ -22,7 +22,11 @@
 			<minimum width="200" height="50" />
 			<dynamic />
 		</sizelimits>
-		<script>function onInit()
+		<script>function onClickDown(button, x, y)
+				self.bringToFront();
+			end
+
+			function onInit()
 				if Session.IsHost then
 					makeStatTagsPublic();
 				end
@@ -50,14 +54,24 @@
 				<resource>Window_statuses_Title</resource>
 			</windowtitlebar>
 			<windowlist name="stattagg_list">
-				<bounds>12,50,265,200</bounds>
+				<anchored>
+					<left offset="12" />
+					<top offset="50" />
+					<right offset="-23" />
+					<bottom offset="-50" />
+				</anchored>
 				<class>stattagdetailsg</class>
 				<datasource>.stattagg_list</datasource>
+				<columns width="265" fillwidth="true" />
 				<allowcreate />
 				<allowdelete />
 			</windowlist>
 			<button_iadd name="stattagg_list_iadd">
-				<bounds>257,27,20,20</bounds>
+				<anchored>
+					<top offset="27" />
+					<right offset="-23" />
+					<size width="20" height="20" />
+				</anchored>
 				<gmvisibleonly />
 				<tooltip textres="statuses_stattagg_list_iadd_Tooltip" />
 				<icon normal="button_add" />
@@ -81,7 +95,11 @@
 			</button_iadd>
 			<number name="plus1">
 				<frame name="buttondown" />
-				<bounds>34,254,30,30</bounds>
+				<anchored>
+					<left offset="34" />
+					<bottom offset="-16" />
+					<size width="30" height="30" />
+				</anchored>
 				<tooltip textres="statuses_plus1_Tooltip" />
 				<color>#FF000000</color>
 				<readonly />
@@ -164,7 +182,11 @@
 			</number>
 			<number name="minus1">
 				<frame name="buttondown" />
-				<bounds>156,254,30,30</bounds>
+				<anchored>
+					<left offset="156" />
+					<bottom offset="-16" />
+					<size width="30" height="30" />
+				</anchored>
 				<tooltip textres="statuses_minus1_Tooltip" />
 				<color>#FF000000</color>
 				<readonly />
@@ -247,7 +269,11 @@
 			</number>
 			<number name="plus2">
 				<frame name="buttondown" />
-				<bounds>74,254,30,30</bounds>
+				<anchored>
+					<left offset="74" />
+					<bottom offset="-16" />
+					<size width="30" height="30" />
+				</anchored>
 				<tooltip textres="statuses_plus2_Tooltip" />
 				<color>#FF000000</color>
 				<readonly />
@@ -330,7 +356,11 @@
 			</number>
 			<number name="minus2">
 				<frame name="buttondown" />
-				<bounds>196,254,30,30</bounds>
+				<anchored>
+					<left offset="196" />
+					<bottom offset="-16" />
+					<size width="30" height="30" />
+				</anchored>
 				<tooltip textres="statuses_minus2_Tooltip" />
 				<color>#FF000000</color>
 				<readonly />
@@ -413,7 +443,11 @@
 			</number>
 			<number name="plus3">
 				<frame name="buttondown" />
-				<bounds>114,254,30,30</bounds>
+				<anchored>
+					<left offset="114" />
+					<bottom offset="-16" />
+					<size width="30" height="30" />
+				</anchored>
 				<tooltip textres="statuses_plus3_Tooltip" />
 				<color>#FF000000</color>
 				<readonly />
@@ -496,7 +530,11 @@
 			</number>
 			<number name="minus3">
 				<frame name="buttondown" />
-				<bounds>236,254,30,30</bounds>
+				<anchored>
+					<left offset="236" />
+					<bottom offset="-16" />
+					<size width="30" height="30" />
+				</anchored>
 				<tooltip textres="statuses_minus3_Tooltip" />
 				<color>#FF000000</color>
 				<readonly />

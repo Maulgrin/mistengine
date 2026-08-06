@@ -22,7 +22,11 @@
 			<minimum width="200" height="50" />
 			<dynamic />
 		</sizelimits>
-		<script>function onInit()
+		<script>function onClickDown(button, x, y)
+				self.bringToFront();
+			end
+
+			function onInit()
 				if Session.IsHost then
 					makeStatTagsPublic();
 				end
@@ -50,14 +54,24 @@
 				<resource>Window_threats_Title</resource>
 			</windowtitlebar>
 			<windowlist name="threat_list">
-				<bounds>22,50,255,200</bounds>
+				<anchored>
+					<left offset="22" />
+					<top offset="50" />
+					<right offset="-23" />
+					<bottom offset="-23" />
+				</anchored>
 				<class>threatdetails</class>
 				<datasource>.threatdetails_list</datasource>
+				<columns width="255" fillwidth="true" />
 				<allowcreate />
 				<allowdelete />
 			</windowlist>
 			<button_iadd name="threat_list_iadd">
-				<bounds>254,27,20,20</bounds>
+				<anchored>
+					<top offset="27" />
+					<right offset="-26" />
+					<size width="20" height="20" />
+				</anchored>
 				<gmvisibleonly />
 				<tooltip textres="threats_threat_list_iadd_Tooltip" />
 				<icon normal="button_add" />

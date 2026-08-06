@@ -10,6 +10,10 @@
 		</sizelimits>
 		<script>local aFellowThemeButtonIndexes = { 1, 2, 3, 4, 5, 6, 7, 9, 10 };
 
+			function onClickDown(button, x, y)
+				WindowManager.getTopWindow(self).bringToFront();
+			end
+
 			function getButtonIndex(cButton)
 				if not cButton or not cButton.getName then
 					return 0;
