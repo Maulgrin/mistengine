@@ -1,21 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<panel name="fellowthemes" modes="all">
-		<class>fellowthemes</class>
-		<bounds>
-			<anchored>
-				<left anchor="right" offset="-500" />
-				<top anchor="top" offset="305" />
-				<size>
-					<width>300</width>
-					<height>600</height>
-				</size>
-			</anchored>
-		</bounds>
-		<dynamic />
-	</panel>
 	<windowclass name="fellowthemes">
 		<frame>charsheet</frame>
+		<placement>
+			<size width="300" height="600" />
+		</placement>
 		<sharable />
 		<noclose />
 		<script>function onClickDown(button, x, y)

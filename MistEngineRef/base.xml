@@ -49,6 +49,7 @@
 	<script name="manager_desktoplist" file="scripts/manager_desktoplist.lua" />
 	<script name="manager_fellowshipmod" file="scripts/manager_fellowshipmod.lua" />
 	<script name="manager_modbutton" file="scripts/manager_modbutton.lua" />
+	<script name="MistDesktopWindowManager" file="scripts/manager_mist_desktop_windows.lua" />
 	<script name="manager_relationshipmod" file="scripts/manager_relationshipmod.lua" />
 	<script name="manager_resetstatus" file="scripts/manager_resetstatus.lua" />
 	<script name="manager_scratchmod" file="scripts/manager_scratchmod.lua" />

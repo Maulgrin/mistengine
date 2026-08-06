@@ -1,21 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<panel name="threats" modes="host">
-		<class>threats</class>
-		<bounds>
-			<anchored>
-				<left anchor="right" offset="-700" />
-				<top anchor="top" offset="0" />
-				<size>
-					<width>300</width>
-					<height>300</height>
-				</size>
-			</anchored>
-		</bounds>
-		<dynamic />
-	</panel>
 	<windowclass name="threats">
 		<frame>charsheet</frame>
+		<placement>
+			<size width="300" height="300" />
+		</placement>
 		<sharable />
 		<noclose />
 		<sizelimits>
