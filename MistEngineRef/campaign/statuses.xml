@@ -18,6 +18,10 @@
 		<frame>charsheet</frame>
 		<sharable />
 		<noclose />
+		<sizelimits>
+			<minimum width="200" height="50" />
+			<dynamic />
+		</sizelimits>
 		<script>function onInit()
 				if Session.IsHost then
 					makeStatTagsPublic();
@@ -646,6 +650,7 @@
 					end
 				</script>
 			</buttonfield>
+			<resize_utilitybox />
 		</sheetdata>
 	</windowclass>
 </root>

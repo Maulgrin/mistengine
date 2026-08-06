@@ -20,3 +20,7 @@
 ## 2026-08-03
 
 - Added `notes/howtouse.md` with player-facing usage instructions derived from the current MistEngineRef character sheet, theme, status/tag, backpack, relationship, and fellowship theme code.
+
+## 2026-08-06
+
+- Added dynamic resize limits and CoreRPG resize handles to the `statuses` and `threats` desktop windows while preserving their existing shrink button size.
