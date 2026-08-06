@@ -2,7 +2,7 @@
 <root>
 	<windowclass name="charsheet_main">
 		<placement>
-			<size height="565" width="990" />
+			<size height="565" width="1290" />
 		</placement>
 		<sheetdata>
 			<list_text name="theme_list">
@@ -20,6 +20,61 @@
 				</columns>
 				<newfocus>themes_cbx</newfocus>
 			</list_text>
+			<list_text name="stattag_list">
+				<script>function onDrop(x, y, draginfo)
+						if draginfo.getType() ~= "shortcut" then
+							return false;
+						end
+
+						local sClass, sRecord = draginfo.getShortcutData();
+						if not RecordDataManager.isRecordTypeDisplayClass("stattag", sClass) then
+							return false;
+						end
+
+						local nodeSource = DB.findNode(sRecord);
+						if not nodeSource then
+							return false;
+						end
+
+						local wNew = createWindow();
+						if not wNew then
+							return false;
+						end
+
+						local nodeTarget = wNew.getDatabaseNode();
+						DB.setValue(nodeTarget, "statustag_string", "string", DB.getValue(nodeSource, "name", ""));
+						return true;
+					end</script>
+				<frame name="charsheet" offset="15,40,15,40" />
+				<bounds>1002,40,280,200</bounds>
+				<class>stattagdetails</class>
+				<datasource>.stattag_list</datasource>
+				<allowcreate />
+				<allowdelete />
+				<empty>
+					<textres>charsheet_main_stattag_list_EmptyListText</textres>
+				</empty>
+				<columns>
+					<width>280</width>
+					<filldown />
+				</columns>
+				<newfocus>statustag_string</newfocus>
+			</list_text>
+			<list_text name="backpack_list">
+				<frame name="charsheet" offset="15,40,15,40" />
+				<bounds>1002,320,280,200</bounds>
+				<class>backpackdetails</class>
+				<datasource>.backpack_list</datasource>
+				<allowcreate />
+				<allowdelete />
+				<empty>
+					<textres>charsheet_main_backpack_list_EmptyListText</textres>
+				</empty>
+				<columns>
+					<width>275</width>
+				</columns>
+				<newfocus>item_string</newfocus>
+			</list_text>
 			<button_iadd name="theme_list_iadd">
 				<bounds>968,2,20,20</bounds>
 				<tooltip textres="charsheet_main_theme_list_iadd_Tooltip" />
@@ -34,6 +89,46 @@
 				<font>button-white</font>
 				<target>theme_list</target>
 			</button_iedit>
+			<button_iadd name="stattag_list_iadd">
+				<bounds>1256,18,20,20</bounds>
+				<tooltip textres="charsheet_main_stattag_list_iadd_Tooltip" />
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>stattag_list</target>
+			</button_iadd>
+			<button_iedit name="stattag_list_iedit">
+				<bounds>1276,18,20,20</bounds>
+				<tooltip textres="charsheet_main_stattag_list_iedit_Tooltip" />
+				<icon normal="button_edit" />
+				<font>button-white</font>
+				<target>stattag_list</target>
+			</button_iedit>
+			<button_iadd name="backpack_list_iadd">
+				<bounds>1256,298,20,20</bounds>
+				<tooltip textres="charsheet_main_backpack_list_iadd_Tooltip" />
+				<icon normal="button_add" />
+				<font>button-white</font>
+				<target>backpack_list</target>
+			</button_iadd>
+			<button_iedit name="backpack_list_iedit">
+				<bounds>1276,298,20,20</bounds>
+				<tooltip textres="charsheet_main_backpack_list_iedit_Tooltip" />
+				<icon normal="button_edit" />
+				<font>button-white</font>
+				<target>backpack_list</target>
+			</button_iedit>
+			<stringcontrol name="stattags_lbl">
+				<bounds>1054,11,164,20</bounds>
+				<static textres="charsheet_main_stattags_lbl_LabelCaption" />
+				<font>reference-h</font>
+				<readonly />
+			</stringcontrol>
+			<stringcontrol name="backpack_lbl">
+				<bounds>1065,295,154,20</bounds>
+				<static textres="charsheet_main_backpack_lbl_LabelCaption" />
+				<font>reference-h</font>
+				<readonly />
+			</stringcontrol>
 		</sheetdata>
 	</windowclass>
 </root>

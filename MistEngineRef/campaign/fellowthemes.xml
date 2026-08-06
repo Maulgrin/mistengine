@@ -7,6 +7,10 @@
 		</placement>
 		<sharable />
 		<noclose />
+		<sizelimits>
+			<minimum width="200" height="50" />
+			<dynamic />
+		</sizelimits>
 		<script>function onClickDown(button, x, y)
 				self.bringToFront();
 			end
@@ -142,11 +146,12 @@
 						if bThreatsMinimized then
 							window.setSize(200, 50);
 						else
-							window.setSize(300, 300);
+							window.setSize(300, 600);
 						end
 					end
 				</script>
 			</buttonfield>
+			<resize_utilitybox />
 		</sheetdata>
 	</windowclass>
 </root>

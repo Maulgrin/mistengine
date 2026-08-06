@@ -27,3 +27,8 @@
 - Anchored the `statuses` and `threats` desktop lists to resize with their parent windows, anchored the `statuses` quick plus/minus buttons to the bottom edge, and made `stattagdetailsg`/`threatdetails` row text fields and right-side controls respond to row width changes.
 - Added click-to-front behavior to the `statuses`, `fellowthemes`, and `threats` desktop windows and their list row windowclasses using CoreRPG's verified `bringToFront()` window API.
 - Replaced the `statuses`, `fellowthemes`, and `threats` desktop panel declarations with auto-opened `noclose` windows so they participate in the normal Fantasy Grounds window stack where click-to-front can work.
+- Added a copy of the character `.stattag_list` to `charsheet_main`, using the existing `stattagdetails` row windowclass and positioning it to the right of the existing theme list.
+- Reduced the Main-tab `stattag_list` height to 200 to leave space for a future backpack list beneath it.
+- Added a copy of the character `.backpack_list` to `charsheet_main`, using the existing `backpackdetails` row windowclass and positioning it under the Main-tab status/tag list.
+- Shrank the Main-tab `backpack_list` height to 200 and moved it lower to avoid overlap with the status/tag list above.
+- Added dynamic size limits and a resize handle to the `fellowthemes` window, and corrected its shrink button restore size to `300x600`.

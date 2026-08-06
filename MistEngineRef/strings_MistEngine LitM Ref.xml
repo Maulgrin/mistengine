@@ -53,6 +53,14 @@
 	<string name="charsheet_main_theme_list_EmptyListText">Right Click Create to add Theme</string>
 	<string name="charsheet_main_theme_list_iadd_Tooltip">Add Themes</string>
 	<string name="charsheet_main_theme_list_iedit_Tooltip">Edit Themes</string>
+	<string name="charsheet_main_stattag_list_EmptyListText">Statuses/Tags</string>
+	<string name="charsheet_main_stattag_list_iadd_Tooltip">Add Status/Tag</string>
+	<string name="charsheet_main_stattag_list_iedit_Tooltip">Edit Status/Tag</string>
+	<string name="charsheet_main_stattags_lbl_LabelCaption">Statuses/Tags</string>
+	<string name="charsheet_main_backpack_list_EmptyListText">Backpack</string>
+	<string name="charsheet_main_backpack_list_iadd_Tooltip">Add Items</string>
+	<string name="charsheet_main_backpack_list_iedit_Tooltip">Edit items</string>
+	<string name="charsheet_main_backpack_lbl_LabelCaption">The Backpack</string>
 	<string name="charsheet_notes_lblRace_LabelCaption">RACE</string>
 	<string name="charsheet_notes_lblGender_LabelCaption">SEX</string>
 	<string name="charsheet_notes_lblAge_LabelCaption">AGE</string>

@@ -3,12 +3,12 @@
 	<windowclass name="charsheet">
 		<frame>charsheet</frame>
 		<placement>
-			<size height="670" width="1024" />
+			<size height="670" width="1324" />
 		</placement>
 		<playercontrol />
 		<softclose />
 		<sizelimits resize="both">
-			<minimum width="1024" height="670" />
+			<minimum width="1324" height="670" />
 			<dynamic />
 		</sizelimits>
 		<tooltip field="name" />
